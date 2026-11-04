@@ -2089,7 +2089,7 @@ textarea.w-input, textarea.w-select {
 .body {
   color: var(--white-100);
   background-color: #091b20;
-  font-family: Inter, sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 1rem;
 }
 
@@ -5210,7 +5210,7 @@ body {
     radial-gradient(circle at 50% 80%, rgba(56, 189, 248, 0.12) 0%, transparent 55%),
     #06152d !important;
   color: #ffffff !important;
-  font-family: 'Inter', -apple-system, sans-serif !important;
+  font-family: 'Poppins', -apple-system, sans-serif !important;
   overflow-x: hidden;
 }
 
