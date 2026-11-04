@@ -74,9 +74,9 @@ export default function Hero({ onOpenBooking }) {
           <source src="/videos/hero-coastal-jetski.mp4" type="video/mp4" />
         </video>
 
-        {/* Floating Content Card on the Left (Expanded Proportions, Ultra-Clear Visibility) */}
+        {/* Desktop: Floating Content Card on the Left (100% Preserved) */}
         <div 
-          className="hero-card-left"
+          className="hero-card-left desktop-only"
           style={{
             position: 'relative',
             zIndex: 3,
@@ -204,6 +204,77 @@ export default function Hero({ onOpenBooking }) {
             </div>
           </div>
 
+        </div>
+
+        {/* Mobile: 100% Video Visibility (No card/modal box, max 3 words, pure action) */}
+        <div 
+          className="hero-mobile-overlay mobile-only"
+          style={{
+            position: 'relative',
+            zIndex: 3,
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'flex-start',
+            gap: '1rem',
+            padding: '1.5rem 0.5rem 0.5rem',
+            background: 'transparent'
+          }}
+        >
+          <h1 style={{
+            fontSize: 'clamp(2.35rem, 8.5vw, 3rem)',
+            fontWeight: 900,
+            color: '#ffffff',
+            letterSpacing: '-1px',
+            lineHeight: 1.05,
+            margin: 0,
+            textShadow: '0 4px 20px rgba(0, 0, 0, 0.9), 0 2px 8px rgba(0, 0, 0, 0.7)',
+            textTransform: 'uppercase'
+          }}>
+            Ride The Waves
+          </h1>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', width: '100%', flexWrap: 'wrap' }}>
+            <button
+              onClick={() => onOpenBooking()}
+              className="btn-primary"
+              style={{
+                flex: 1,
+                minWidth: '135px',
+                padding: '0.85rem 1.5rem',
+                fontSize: '0.92rem',
+                background: 'linear-gradient(135deg, #f59e0b 0%, #ea580c 100%)',
+                boxShadow: '0 8px 25px rgba(0, 0, 0, 0.6)',
+                border: 'none',
+                color: '#ffffff',
+                justifyContent: 'center'
+              }}
+            >
+              <span>Book Now</span>
+              <ArrowUpRight size={15} color="#ffffff" />
+            </button>
+
+            <a
+              href={`tel:${companyInfo.phone}`}
+              className="btn-secondary"
+              style={{
+                flex: 1,
+                minWidth: '135px',
+                padding: '0.85rem 1.25rem',
+                fontSize: '0.88rem',
+                background: 'rgba(0, 0, 0, 0.45)',
+                backdropFilter: 'blur(10px)',
+                WebkitBackdropFilter: 'blur(10px)',
+                borderColor: 'rgba(255, 255, 255, 0.35)',
+                color: '#ffffff',
+                boxShadow: '0 8px 25px rgba(0, 0, 0, 0.4)',
+                justifyContent: 'center'
+              }}
+            >
+              <Phone size={14} color="#38bdf8" />
+              <span>Call Us</span>
+            </a>
+          </div>
         </div>
 
       </div>
