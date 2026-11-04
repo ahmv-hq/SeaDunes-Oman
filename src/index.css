@@ -4,50 +4,7 @@
    SeaDunes Oman - White & Blue Glassmorphic Design System & Theme Engine
    ========================================================================== */
 
-:root, [data-theme="dark"] {
-  --bg-page: #06152d;
-  --bg-surface: #0a1f3d;
-  --bg-elevated: #0f274c;
-  --bg-gradient: radial-gradient(circle at 50% 10%, #0d2a54 0%, #06152d 55%, #030b17 100%);
-  
-  --surface-glass: rgba(255, 255, 255, 0.04);
-  --surface-glass-hover: rgba(255, 255, 255, 0.08);
-  --surface-glass-card: rgba(10, 31, 61, 0.65);
-  --surface-glass-modal: rgba(6, 21, 45, 0.94);
-  --surface-glass-nav: rgba(6, 21, 45, 0.88);
-  --surface-pill: rgba(255, 255, 255, 0.08);
-  --surface-pill-hover: rgba(56, 189, 248, 0.18);
-  
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-glass: rgba(255, 255, 255, 0.12);
-  --border-accent: rgba(56, 189, 248, 0.4);
-  --border-active: #38bdf8;
-  
-  --text-primary: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.75);
-  --text-muted: rgba(255, 255, 255, 0.48);
-  --text-brand: #38bdf8;
-  
-  --accent-cyan: #38bdf8;
-  --accent-blue: #0284c7;
-  --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #0066ff 100%);
-  --btn-secondary-bg: rgba(255, 255, 255, 0.08);
-  --btn-secondary-border: rgba(255, 255, 255, 0.18);
-  --btn-secondary-text: #ffffff;
-  
-  --card-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.6);
-  --card-shadow-hover: 0 28px 60px -15px rgba(56, 189, 248, 0.28);
-  --glow-color: rgba(56, 189, 248, 0.3);
-  --input-bg: rgba(255, 255, 255, 0.07);
-  --input-border: rgba(255, 255, 255, 0.16);
-  --input-text: #ffffff;
-  --divider: rgba(255, 255, 255, 0.1);
-  --hero-overlay: linear-gradient(180deg, rgba(6, 21, 45, 0.68) 0%, rgba(6, 21, 45, 0.85) 60%, var(--bg-page) 100%);
-  --scrollbar-track: #040e1e;
-  --scrollbar-thumb: rgba(255, 255, 255, 0.2);
-}
-
-[data-theme="light"] {
+:root, [data-theme="light"] {
   --bg-page: #f8fafc;
   --bg-surface: #ffffff;
   --bg-elevated: #f1f5f9;
@@ -90,6 +47,49 @@
   --scrollbar-thumb: rgba(2, 132, 199, 0.3);
 }
 
+[data-theme="dark"] {
+  --bg-page: #06152d;
+  --bg-surface: #0a1f3d;
+  --bg-elevated: #0f274c;
+  --bg-gradient: radial-gradient(circle at 50% 10%, #0d2a54 0%, #06152d 55%, #030b17 100%);
+  
+  --surface-glass: rgba(255, 255, 255, 0.04);
+  --surface-glass-hover: rgba(255, 255, 255, 0.08);
+  --surface-glass-card: rgba(10, 31, 61, 0.65);
+  --surface-glass-modal: rgba(6, 21, 45, 0.94);
+  --surface-glass-nav: rgba(6, 21, 45, 0.88);
+  --surface-pill: rgba(255, 255, 255, 0.08);
+  --surface-pill-hover: rgba(56, 189, 248, 0.18);
+  
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-glass: rgba(255, 255, 255, 0.12);
+  --border-accent: rgba(56, 189, 248, 0.4);
+  --border-active: #38bdf8;
+  
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.75);
+  --text-muted: rgba(255, 255, 255, 0.48);
+  --text-brand: #38bdf8;
+  
+  --accent-cyan: #38bdf8;
+  --accent-blue: #0284c7;
+  --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #0066ff 100%);
+  --btn-secondary-bg: rgba(255, 255, 255, 0.08);
+  --btn-secondary-border: rgba(255, 255, 255, 0.18);
+  --btn-secondary-text: #ffffff;
+  
+  --card-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.6);
+  --card-shadow-hover: 0 28px 60px -15px rgba(56, 189, 248, 0.28);
+  --glow-color: rgba(56, 189, 248, 0.3);
+  --input-bg: rgba(255, 255, 255, 0.07);
+  --input-border: rgba(255, 255, 255, 0.16);
+  --input-text: #ffffff;
+  --divider: rgba(255, 255, 255, 0.1);
+  --hero-overlay: linear-gradient(180deg, rgba(6, 21, 45, 0.68) 0%, rgba(6, 21, 45, 0.85) 60%, var(--bg-page) 100%);
+  --scrollbar-track: #040e1e;
+  --scrollbar-thumb: rgba(255, 255, 255, 0.2);
+}
+
 /* ==========================================================================
    Base Styles & Tight Spacing (No Excessive Dead Spaces)
    ========================================================================== */
@@ -100,7 +100,7 @@
 html {
   scroll-behavior: smooth;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  color-scheme: dark light;
+  color-scheme: light dark;
 }
 
 body {

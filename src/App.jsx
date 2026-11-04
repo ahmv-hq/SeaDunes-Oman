@@ -18,9 +18,9 @@ export default function App() {
   const [bookingInitialData, setBookingInitialData] = useState({});
   const [selectedPackageDetails, setSelectedPackageDetails] = useState(null);
   
-  // Theme state: dark or light
+  // Theme state: light (default) or dark
   const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('seadunes-theme') || 'dark';
+    return localStorage.getItem('seadunes-theme') || 'light';
   });
 
   // Scroll tracking
