@@ -103,12 +103,12 @@ export default function Hero({ onOpenBooking }) {
             Luxury rides, expert instructors, and iconic scenery.
           </div>
 
-          {/* Title (Bold & Impactful, Larger Size) */}
+          {/* Title (Thin / Elegant Poppins Variant) */}
           <h1 style={{ 
-            fontSize: 'clamp(2rem, 3vw, 2.65rem)', 
-            fontWeight: 800, 
-            letterSpacing: '-1px', 
-            lineHeight: 1.2, 
+            fontSize: 'clamp(2.1rem, 3.2vw, 2.75rem)', 
+            fontWeight: 300, 
+            letterSpacing: '-0.3px', 
+            lineHeight: 1.25, 
             color: 'var(--text-primary)', 
             margin: '0 0 1.15rem' 
           }}>
