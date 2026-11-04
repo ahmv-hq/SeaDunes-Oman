@@ -49,8 +49,8 @@ export default function Navbar({ onOpenBooking, theme, toggleTheme }) {
           </div>
         </a>
 
-        {/* Center: Clean Minimal Navigation Links (No Clutter, Refined Luxury Text) */}
-        <nav style={{ display: 'flex', alignItems: 'center', gap: '1.75rem' }} className="mobile-hidden">
+        {/* Center: Clean Minimal Navigation Links (Desktop Only - Strictly hidden on mobile) */}
+        <nav style={{ display: 'flex', alignItems: 'center', gap: '1.75rem' }} className="desktop-only">
           <a href="#packages" className="nav-link">
             Packages
           </a>
@@ -68,13 +68,14 @@ export default function Navbar({ onOpenBooking, theme, toggleTheme }) {
           </a>
         </nav>
 
-        {/* Right: Theme Toggle, Desktop CTA & Mobile Hamburger */}
+        {/* Right: Desktop Controls & Clean Mobile 3-Lines Menu Button */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
           
-          {/* Light / Dark Mode Switcher (Clean Round Icon Button) */}
+          {/* Light / Dark Mode Switcher (Desktop Only) */}
           <button
             onClick={toggleTheme}
             aria-label="Toggle Theme"
+            className="desktop-only"
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -100,7 +101,7 @@ export default function Navbar({ onOpenBooking, theme, toggleTheme }) {
             )}
           </button>
 
-          {/* Book Adventure Button (Desktop only to keep mobile header clean) */}
+          {/* Book Adventure Button (Desktop Only) */}
           <button
             onClick={() => onOpenBooking()}
             className="btn-primary desktop-only"
@@ -110,10 +111,10 @@ export default function Navbar({ onOpenBooking, theme, toggleTheme }) {
             <ArrowUpRight size={14} color="#ffffff" />
           </button>
 
-          {/* Mobile hamburger (Clean Glass Pill on Mobile) */}
+          {/* Mobile 3-Lines Menu Button (Right side on mobile only) */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="mobile-visible"
+            className="mobile-only"
             aria-label="Toggle Menu"
             style={{ 
               display: 'flex',
@@ -123,16 +124,16 @@ export default function Navbar({ onOpenBooking, theme, toggleTheme }) {
               border: '1px solid var(--border-glass)', 
               color: mobileOpen ? '#ffffff' : 'var(--text-primary)', 
               cursor: 'pointer', 
-              width: '2.5rem',
-              height: '2.5rem',
-              borderRadius: '50%',
+              width: '2.75rem',
+              height: '2.75rem',
+              borderRadius: '0.75rem',
               transition: 'all 0.25s ease',
               backdropFilter: 'blur(10px)',
               WebkitBackdropFilter: 'blur(10px)',
               flexShrink: 0
             }}
           >
-            {mobileOpen ? <X size={18} /> : <Menu size={18} />}
+            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
 
@@ -141,17 +142,23 @@ export default function Navbar({ onOpenBooking, theme, toggleTheme }) {
       {/* Mobile Drawer */}
       {mobileOpen && (
         <div style={{
+          position: 'fixed',
+          top: '4.75rem',
+          left: 0,
+          right: 0,
+          bottom: 0,
           background: 'var(--surface-glass-modal)',
           backdropFilter: 'blur(28px)',
           WebkitBackdropFilter: 'blur(28px)',
-          padding: '1.5rem 1.5rem 2rem',
-          borderBottom: '1px solid var(--border-glass)',
+          padding: '1.5rem 1.5rem 2.5rem',
+          borderTop: '1px solid var(--border-glass)',
           display: 'flex',
           flexDirection: 'column',
           gap: '1.15rem',
           boxShadow: '0 20px 40px rgba(0,0,0,0.25)',
-          maxHeight: 'calc(100vh - 4.75rem)',
-          overflowY: 'auto'
+          overflowY: 'auto',
+          zIndex: 999,
+          animation: 'modalFadeIn 0.2s ease-out'
         }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '0.75rem', borderBottom: '1px solid var(--divider)' }}>
             <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-muted)' }}>Theme Appearance</span>

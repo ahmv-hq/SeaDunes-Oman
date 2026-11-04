@@ -1,42 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { companyInfo } from '../data/seadunesData';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function Statistics() {
   const statsSectionRef = useRef(null);
-  const sliderRef = useRef(null);
-  const [activeIdx, setActiveIdx] = useState(0);
-
-  const handleScroll = () => {
-    if (!sliderRef.current) return;
-    const { scrollLeft, clientWidth } = sliderRef.current;
-    const itemWidth = clientWidth * 0.76;
-    const idx = Math.round(scrollLeft / itemWidth);
-    setActiveIdx(Math.min(Math.max(idx, 0), companyInfo.stats.length - 1));
-  };
-
-  const scrollToIndex = (index) => {
-    if (!sliderRef.current) return;
-    const { clientWidth } = sliderRef.current;
-    const itemWidth = clientWidth * 0.76 + 18;
-    sliderRef.current.scrollTo({
-      left: index * itemWidth,
-      behavior: 'smooth'
-    });
-    setActiveIdx(index);
-  };
-
-  const handlePrev = () => {
-    const nextIdx = Math.max(activeIdx - 1, 0);
-    scrollToIndex(nextIdx);
-  };
-
-  const handleNext = () => {
-    const nextIdx = Math.min(activeIdx + 1, companyInfo.stats.length - 1);
-    scrollToIndex(nextIdx);
-  };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -77,12 +45,8 @@ export default function Statistics() {
           </h2>
         </div>
 
-        {/* Statistic Cards: Grid on Desktop, Touch Snap Slider on Mobile */}
-        <div 
-          ref={sliderRef}
-          onScroll={handleScroll}
-          className="stats-grid mobile-slider-track stats-slider-track animate-cards-grid"
-        >
+        {/* Statistic Cards Grid: 4 columns on Desktop, Clean 2x2 on Mobile */}
+        <div className="stats-grid animate-cards-grid">
           {companyInfo.stats.map((stat, idx) => {
             const num = parseInt(stat.value, 10);
             const suffix = stat.value.replace(/^[0-9]+/, '');
@@ -90,7 +54,7 @@ export default function Statistics() {
             return (
               <div key={idx} className="statistic-card reveal-card" style={{ margin: 0 }}>
                 <div style={{ 
-                  fontSize: 'clamp(2.5rem, 4vw, 3.5rem)', 
+                  fontSize: 'clamp(2.25rem, 4vw, 3.5rem)', 
                   fontWeight: 800, 
                   color: 'var(--text-primary)', 
                   letterSpacing: '-2px', 
@@ -111,45 +75,6 @@ export default function Statistics() {
               </div>
             );
           })}
-        </div>
-
-        {/* Mobile Slider Controls (Hidden on Desktop) */}
-        <div className="mobile-only mobile-slider-controls">
-          <div className="mobile-swipe-hint">
-            <span>Swipe milestones</span>
-          </div>
-
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
-            <div className="mobile-slider-dots">
-              {companyInfo.stats.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => scrollToIndex(i)}
-                  className={`mobile-slider-dot ${activeIdx === i ? 'active' : ''}`}
-                  aria-label={`Go to stat ${i + 1}`}
-                />
-              ))}
-            </div>
-
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-              <button 
-                onClick={handlePrev}
-                disabled={activeIdx === 0}
-                className="mobile-slider-arrow"
-                aria-label="Previous Stat"
-              >
-                <ChevronLeft size={16} />
-              </button>
-              <button 
-                onClick={handleNext}
-                disabled={activeIdx === companyInfo.stats.length - 1}
-                className="mobile-slider-arrow"
-                aria-label="Next Stat"
-              >
-                <ChevronRight size={16} />
-              </button>
-            </div>
-          </div>
         </div>
 
       </div>
