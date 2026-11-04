@@ -128,7 +128,7 @@ export default function App() {
           href={`https://wa.me/${companyInfo.phone.replace(/[^0-9]/g, '')}?text=Hello%20SeaDunes%20Oman,%20I%20would%20like%20to%20inquire%20about%20booking%20an%20adventure.`}
           target="_blank"
           rel="noreferrer"
-          className="btn-primary"
+          className="btn-primary desktop-only"
           style={{ 
             padding: 'clamp(0.65rem, 2vw, 0.85rem) clamp(1rem, 2.5vw, 1.4rem)', 
             fontSize: 'clamp(0.8rem, 2vw, 0.88rem)',
