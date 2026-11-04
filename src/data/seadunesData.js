@@ -14,11 +14,10 @@ export const companyInfo = {
   instagram: "@active.oman.drive",
   instagramUrl: "https://www.instagram.com/active.oman.drive",
   stats: [
-    { value: "20+", label: "Years Experience", sub: "/ Serving thrill-seekers since 2005" },
-    { value: "9", label: "Curated Packages", sub: "/ From Dimaniyat to Jebel Shams" },
-    { value: "100+", label: "KM Desert Dunes", sub: "/ Wahiba Sands off-road trails" },
-    { value: "24+", label: "Fleet Vehicles", sub: "/ Polaris Buggies & Quad ATVs" },
-    { value: "100%", label: "Local Omani Guides", sub: "/ Certified, English & Arabic speaking" }
+    { value: "20+", label: "Years Experience", sub: "Serving thrill-seekers since 2005" },
+    { value: "9", label: "Curated Packages", sub: "From Daymaniyat to Jebel Shams" },
+    { value: "24+", label: "Fleet Vehicles", sub: "Polaris Buggies & Quad ATVs" },
+    { value: "100%", label: "Local Omani Guides", sub: "Certified, English & Arabic speaking" }
   ]
 };
 
