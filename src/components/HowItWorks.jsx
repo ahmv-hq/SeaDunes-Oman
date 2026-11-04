@@ -1,5 +1,5 @@
-import React from 'react';
-import { Compass, Sliders, Truck, Award, CheckCircle2 } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { Compass, Sliders, Truck, Award, CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const steps = [
   {
@@ -29,6 +29,38 @@ const steps = [
 ];
 
 export default function HowItWorks() {
+  const sliderRef = useRef(null);
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  const handleScroll = () => {
+    if (!sliderRef.current) return;
+    const { scrollLeft, clientWidth } = sliderRef.current;
+    const itemWidth = clientWidth * 0.82;
+    const idx = Math.round(scrollLeft / itemWidth);
+    setActiveIdx(Math.min(Math.max(idx, 0), steps.length - 1));
+  };
+
+  const scrollToIndex = (index) => {
+    if (!sliderRef.current) return;
+    const { clientWidth } = sliderRef.current;
+    const itemWidth = clientWidth * 0.82 + 18;
+    sliderRef.current.scrollTo({
+      left: index * itemWidth,
+      behavior: 'smooth'
+    });
+    setActiveIdx(index);
+  };
+
+  const handlePrev = () => {
+    const nextIdx = Math.max(activeIdx - 1, 0);
+    scrollToIndex(nextIdx);
+  };
+
+  const handleNext = () => {
+    const nextIdx = Math.min(activeIdx + 1, steps.length - 1);
+    scrollToIndex(nextIdx);
+  };
+
   return (
     <section id="how-it-works" className="section-padding" style={{ position: 'relative' }}>
       <div className="section-container">
@@ -43,15 +75,19 @@ export default function HowItWorks() {
           </p>
         </div>
 
-        {/* 4 Steps Grid */}
-        <div className="animate-cards-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem' }}>
+        {/* 4 Steps: Grid on Desktop, Touch Snap Slider on Mobile */}
+        <div 
+          ref={sliderRef}
+          onScroll={handleScroll}
+          className="steps-grid mobile-slider-track steps-slider-track animate-cards-grid"
+        >
           {steps.map((s, idx) => {
             const Icon = s.icon;
             return (
               <div 
                 key={idx} 
                 className="statistic-card reveal-card"
-                style={{ padding: '1.75rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}
+                style={{ padding: '1.75rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', margin: 0 }}
               >
                 <div>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
@@ -79,6 +115,45 @@ export default function HowItWorks() {
               </div>
             );
           })}
+        </div>
+
+        {/* Mobile Slider Controls (Hidden on Desktop) */}
+        <div className="mobile-only mobile-slider-controls">
+          <div className="mobile-swipe-hint">
+            <span>Swipe steps 01-04</span>
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+            <div className="mobile-slider-dots">
+              {steps.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => scrollToIndex(i)}
+                  className={`mobile-slider-dot ${activeIdx === i ? 'active' : ''}`}
+                  aria-label={`Go to step ${i + 1}`}
+                />
+              ))}
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+              <button 
+                onClick={handlePrev}
+                disabled={activeIdx === 0}
+                className="mobile-slider-arrow"
+                aria-label="Previous Step"
+              >
+                <ChevronLeft size={16} />
+              </button>
+              <button 
+                onClick={handleNext}
+                disabled={activeIdx === steps.length - 1}
+                className="mobile-slider-arrow"
+                aria-label="Next Step"
+              >
+                <ChevronRight size={16} />
+              </button>
+            </div>
+          </div>
         </div>
 
       </div>

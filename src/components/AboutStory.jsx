@@ -28,14 +28,14 @@ export default function AboutStory({ onOpenBooking }) {
             <img
               src="/images/Untitled-design-54.png"
               alt="SeaDunes Wahiba Sands Safari"
-              style={{ width: '100%', height: '440px', objectFit: 'cover', display: 'block', transition: 'transform 0.6s ease' }}
+              style={{ width: '100%', height: 'clamp(240px, 42vw, 440px)', objectFit: 'cover', display: 'block', transition: 'transform 0.6s ease' }}
             />
           </div>
 
           {/* Narrative & Value Cards */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
             <p style={{ 
-              fontSize: 'clamp(1.05rem, 1.6vw, 1.25rem)', 
+              fontSize: 'clamp(1.02rem, 1.6vw, 1.25rem)', 
               fontWeight: 500, 
               lineHeight: 1.6, 
               color: 'var(--text-secondary)', 
@@ -47,27 +47,27 @@ export default function AboutStory({ onOpenBooking }) {
 
             <div style={{ 
               display: 'grid', 
-              gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', 
-              gap: '1.25rem', 
+              gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', 
+              gap: 'clamp(0.85rem, 2vw, 1.25rem)', 
               paddingTop: '1.25rem', 
               borderTop: '1px solid var(--divider)' 
             }}>
-              <div className="statistic-card" style={{ padding: '1.25rem' }}>
-                <div style={{ fontSize: '2.25rem', fontWeight: 800, color: 'var(--accent-cyan)', letterSpacing: '-1px' }}>2005</div>
-                <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)', fontWeight: 500, marginTop: '0.2rem' }}>Year Founded in Muscat</div>
+              <div className="statistic-card" style={{ padding: 'clamp(1rem, 2.5vw, 1.25rem)' }}>
+                <div style={{ fontSize: 'clamp(1.75rem, 4vw, 2.25rem)', fontWeight: 800, color: 'var(--accent-cyan)', letterSpacing: '-1px' }}>2005</div>
+                <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: 500, marginTop: '0.2rem' }}>Year Founded in Muscat</div>
               </div>
-              <div className="statistic-card" style={{ padding: '1.25rem' }}>
-                <div style={{ fontSize: '2.25rem', fontWeight: 800, color: 'var(--accent-cyan)', letterSpacing: '-1px' }}>#1</div>
-                <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)', fontWeight: 500, marginTop: '0.2rem' }}>Best Price Guaranteed</div>
+              <div className="statistic-card" style={{ padding: 'clamp(1rem, 2.5vw, 1.25rem)' }}>
+                <div style={{ fontSize: 'clamp(1.75rem, 4vw, 2.25rem)', fontWeight: 800, color: 'var(--accent-cyan)', letterSpacing: '-1px' }}>#1</div>
+                <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: 500, marginTop: '0.2rem' }}>Best Price Guaranteed</div>
               </div>
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap', paddingTop: '0.25rem' }}>
-              <button onClick={() => onOpenBooking()} className="btn-primary" style={{ padding: '0.75rem 1.75rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', flexWrap: 'wrap', paddingTop: '0.25rem' }}>
+              <button onClick={() => onOpenBooking()} className="btn-primary" style={{ padding: '0.75rem 1.5rem', flex: 1, minWidth: '160px', justifyContent: 'center' }}>
                 <span>Reserve Your Tour</span>
                 <ArrowUpRight size={15} color="#ffffff" />
               </button>
-              <a href="#contact" className="btn-secondary" style={{ padding: '0.75rem 1.75rem' }}>
+              <a href="#contact" className="btn-secondary" style={{ padding: '0.75rem 1.5rem', flex: 1, minWidth: '160px', justifyContent: 'center' }}>
                 <Compass size={15} color="var(--accent-cyan)" />
                 <span>Visit Muscat Office</span>
               </a>

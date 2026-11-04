@@ -1,14 +1,52 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { fleetVehicles } from '../data/seadunesData';
-import { Gauge, Users, ArrowUpRight, Check, Zap } from 'lucide-react';
+import { Gauge, Users, ArrowUpRight, Check, Zap, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function FleetSection({ onOpenBooking }) {
   const [activeCategory, setActiveCategory] = useState('buggy');
+  const sliderRef = useRef(null);
+  const [activeIdx, setActiveIdx] = useState(0);
 
   const filtered = fleetVehicles.filter(v => {
     if (activeCategory === 'all') return true;
     return v.category === activeCategory;
   });
+
+  useEffect(() => {
+    setActiveIdx(0);
+    if (sliderRef.current) {
+      sliderRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+    }
+  }, [activeCategory]);
+
+  const handleScroll = () => {
+    if (!sliderRef.current) return;
+    const { scrollLeft, clientWidth } = sliderRef.current;
+    const itemWidth = clientWidth * 0.84;
+    const idx = Math.round(scrollLeft / itemWidth);
+    setActiveIdx(Math.min(Math.max(idx, 0), filtered.length - 1));
+  };
+
+  const scrollToIndex = (index) => {
+    if (!sliderRef.current) return;
+    const { clientWidth } = sliderRef.current;
+    const itemWidth = clientWidth * 0.84 + 18;
+    sliderRef.current.scrollTo({
+      left: index * itemWidth,
+      behavior: 'smooth'
+    });
+    setActiveIdx(index);
+  };
+
+  const handlePrev = () => {
+    const nextIdx = Math.max(activeIdx - 1, 0);
+    scrollToIndex(nextIdx);
+  };
+
+  const handleNext = () => {
+    const nextIdx = Math.min(activeIdx + 1, filtered.length - 1);
+    scrollToIndex(nextIdx);
+  };
 
   return (
     <section id="fleet" className="section-padding" style={{ position: 'relative' }}>
@@ -62,8 +100,12 @@ export default function FleetSection({ onOpenBooking }) {
           </div>
         </div>
 
-        {/* Fleet 3-Column Grid */}
-        <div className="animate-cards-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(290px, 1fr))', gap: '1.75rem' }}>
+        {/* Fleet Grid on Desktop, Touch Snap Slider on Mobile */}
+        <div 
+          ref={sliderRef}
+          onScroll={handleScroll}
+          className="fleet-grid mobile-slider-track animate-cards-grid"
+        >
           {filtered.map((vehicle) => (
             <div 
               key={vehicle.id} 
@@ -158,6 +200,47 @@ export default function FleetSection({ onOpenBooking }) {
             </div>
           ))}
         </div>
+
+        {/* Mobile Slider Controls (Hidden on Desktop) */}
+        {filtered.length > 1 && (
+          <div className="mobile-only mobile-slider-controls">
+            <div className="mobile-swipe-hint">
+              <span>Swipe machines to view</span>
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+              <div className="mobile-slider-dots">
+                {filtered.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => scrollToIndex(i)}
+                    className={`mobile-slider-dot ${activeIdx === i ? 'active' : ''}`}
+                    aria-label={`Go to vehicle ${i + 1}`}
+                  />
+                ))}
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+                <button 
+                  onClick={handlePrev}
+                  disabled={activeIdx === 0}
+                  className="mobile-slider-arrow"
+                  aria-label="Previous Vehicle"
+                >
+                  <ChevronLeft size={16} />
+                </button>
+                <button 
+                  onClick={handleNext}
+                  disabled={activeIdx === filtered.length - 1}
+                  className="mobile-slider-arrow"
+                  aria-label="Next Vehicle"
+                >
+                  <ChevronRight size={16} />
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
       </div>
     </section>

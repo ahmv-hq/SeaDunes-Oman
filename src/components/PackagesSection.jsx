@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { tourPackages } from '../data/seadunesData';
-import { MapPin, Calendar, Users, Star, ArrowUpRight, Eye } from 'lucide-react';
+import { MapPin, Calendar, Users, Star, ArrowUpRight, Eye, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function PackagesSection({ onOpenBooking, onSelectPackageDetails }) {
   const [filter, setFilter] = useState('all');
+  const sliderRef = useRef(null);
+  const [activeIdx, setActiveIdx] = useState(0);
 
   const filtered = tourPackages.filter((p) => {
     if (filter === 'marine') return p.title.toLowerCase().includes('cruise') || p.title.toLowerCase().includes('snorkel') || p.title.toLowerCase().includes('sunset');
@@ -12,6 +14,35 @@ export default function PackagesSection({ onOpenBooking, onSelectPackageDetails 
     if (filter === 'heritage') return p.title.toLowerCase().includes('nizwa') || p.title.toLowerCase().includes('muscat') || p.title.toLowerCase().includes('historical');
     return true;
   });
+
+  const handleScroll = () => {
+    if (!sliderRef.current) return;
+    const { scrollLeft, clientWidth } = sliderRef.current;
+    const itemWidth = clientWidth * 0.84;
+    const idx = Math.round(scrollLeft / itemWidth);
+    setActiveIdx(Math.min(Math.max(idx, 0), filtered.length - 1));
+  };
+
+  const scrollToIndex = (index) => {
+    if (!sliderRef.current) return;
+    const { clientWidth } = sliderRef.current;
+    const itemWidth = clientWidth * 0.84 + 18;
+    sliderRef.current.scrollTo({
+      left: index * itemWidth,
+      behavior: 'smooth'
+    });
+    setActiveIdx(index);
+  };
+
+  const handlePrev = () => {
+    const nextIdx = Math.max(activeIdx - 1, 0);
+    scrollToIndex(nextIdx);
+  };
+
+  const handleNext = () => {
+    const nextIdx = Math.min(activeIdx + 1, filtered.length - 1);
+    scrollToIndex(nextIdx);
+  };
 
   return (
     <section id="packages" className="section-padding" style={{ position: 'relative' }}>
@@ -72,8 +103,12 @@ export default function PackagesSection({ onOpenBooking, onSelectPackageDetails 
           </div>
         </div>
 
-        {/* 3x3 Grid */}
-        <div className="packages-3x3-grid animate-cards-grid">
+        {/* 3x3 Grid on Desktop, Touch Snap Slider on Mobile */}
+        <div 
+          ref={sliderRef}
+          onScroll={handleScroll}
+          className="packages-3x3-grid mobile-slider-track animate-cards-grid"
+        >
           {filtered.map((pkg) => (
             <div 
               key={pkg.id} 
@@ -175,6 +210,45 @@ export default function PackagesSection({ onOpenBooking, onSelectPackageDetails 
 
             </div>
           ))}
+        </div>
+
+        {/* Mobile Slider Controls (Hidden on Desktop) */}
+        <div className="mobile-only mobile-slider-controls">
+          <div className="mobile-swipe-hint">
+            <span>Swipe cards to explore</span>
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+            <div className="mobile-slider-dots">
+              {filtered.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => scrollToIndex(i)}
+                  className={`mobile-slider-dot ${activeIdx === i ? 'active' : ''}`}
+                  aria-label={`Go to slide ${i + 1}`}
+                />
+              ))}
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+              <button 
+                onClick={handlePrev}
+                disabled={activeIdx === 0}
+                className="mobile-slider-arrow"
+                aria-label="Previous Package"
+              >
+                <ChevronLeft size={16} />
+              </button>
+              <button 
+                onClick={handleNext}
+                disabled={activeIdx === filtered.length - 1}
+                className="mobile-slider-arrow"
+                aria-label="Next Package"
+              >
+                <ChevronRight size={16} />
+              </button>
+            </div>
+          </div>
         </div>
 
       </div>

@@ -116,13 +116,13 @@ export default function App() {
       {/* Floating Action Buttons */}
       <div style={{ 
         position: 'fixed', 
-        bottom: '1.75rem', 
-        right: '1.75rem', 
+        bottom: 'clamp(1rem, 3vw, 1.75rem)', 
+        right: 'clamp(1rem, 3vw, 1.75rem)', 
         zIndex: 900, 
         display: 'flex', 
         flexDirection: 'column', 
         alignItems: 'flex-end', 
-        gap: '0.85rem' 
+        gap: '0.65rem' 
       }}>
         <a
           href={`https://wa.me/${companyInfo.phone.replace(/[^0-9]/g, '')}?text=Hello%20SeaDunes%20Oman,%20I%20would%20like%20to%20inquire%20about%20booking%20an%20adventure.`}
@@ -130,12 +130,13 @@ export default function App() {
           rel="noreferrer"
           className="btn-primary"
           style={{ 
-            padding: '0.85rem 1.4rem', 
+            padding: 'clamp(0.65rem, 2vw, 0.85rem) clamp(1rem, 2.5vw, 1.4rem)', 
+            fontSize: 'clamp(0.8rem, 2vw, 0.88rem)',
             boxShadow: '0 12px 30px rgba(0, 102, 255, 0.45)', 
             textDecoration: 'none' 
           }}
         >
-          <MessageSquare size={17} />
+          <MessageSquare size={16} />
           <span>Chat on WhatsApp</span>
         </a>
 

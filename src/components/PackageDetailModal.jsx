@@ -61,7 +61,7 @@ export default function PackageDetailModal({ packageData, onClose, onBookPackage
           </button>
 
           {/* Text Container over Cover Image - 100% High Contrast */}
-          <div style={{ position: 'absolute', bottom: '1.75rem', left: '2rem', right: '2rem', zIndex: 5 }}>
+          <div style={{ position: 'absolute', bottom: '1.5rem', left: 'clamp(1rem, 3.5vw, 2rem)', right: 'clamp(1rem, 3.5vw, 2rem)', zIndex: 5 }}>
             <span style={{ 
               fontSize: '0.78rem', 
               padding: '3px 12px', 
@@ -104,7 +104,7 @@ export default function PackageDetailModal({ packageData, onClose, onBookPackage
         </div>
 
         {/* Body Content */}
-        <div style={{ padding: 'clamp(1.75rem, 4vw, 2.5rem)', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+        <div style={{ padding: 'clamp(1.25rem, 3.5vw, 2.5rem)', display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
           
           <div>
             <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.5rem' }}>

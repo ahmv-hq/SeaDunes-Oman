@@ -273,6 +273,27 @@ body {
 }
 
 /* ==========================================================================
+   Grids on Desktop (Fleet, Steps, Statistics)
+   ========================================================================== */
+.fleet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 1.75rem;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ==========================================================================
    3x3 Services & Packages Grid (User Request)
    ========================================================================== */
 .packages-3x3-grid {
@@ -434,4 +455,177 @@ body {
   z-index: 10000;
   transition: width 0.1s linear;
   box-shadow: 0 0 10px var(--accent-cyan);
+}
+
+/* ==========================================================================
+   Mobile Responsive Slider System & Touch Optimizations
+   (Desktop layout preserved 100%; Mobile becomes smooth swipeable sliders)
+   ========================================================================== */
+
+/* Utility Visibility Classes */
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-only {
+    display: none !important;
+  }
+}
+
+/* Mobile Touch Slider Track (Turns grids into smooth horizontal snap carousels) */
+@media (max-width: 768px) {
+  .mobile-slider-track {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    scroll-behavior: smooth !important;
+    gap: 1.15rem !important;
+    padding: 0.5rem 1.25rem 1.25rem !important;
+    margin-left: -1.25rem !important;
+    margin-right: -1.25rem !important;
+    scrollbar-width: none !important;
+  }
+  
+  .mobile-slider-track::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  /* Specific card widths on mobile so next card peeks into view */
+  .mobile-slider-track > * {
+    flex: 0 0 84vw !important;
+    max-width: 340px !important;
+    min-width: 270px !important;
+    scroll-snap-align: start !important;
+    scroll-snap-stop: normal !important;
+    margin: 0 !important;
+  }
+
+  /* Stats cards slider width */
+  .stats-slider-track > * {
+    flex: 0 0 76vw !important;
+    max-width: 280px !important;
+    min-width: 230px !important;
+  }
+
+  /* Steps cards slider width */
+  .steps-slider-track > * {
+    flex: 0 0 82vw !important;
+    max-width: 320px !important;
+    min-width: 260px !important;
+  }
+
+  /* Compact section padding on mobile to eliminate vast empty space */
+  .section-padding {
+    padding-top: 2.75rem !important;
+    padding-bottom: 2.75rem !important;
+  }
+
+  .section-container {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+
+  /* Hero Section Mobile Perfection */
+  .hero-billboard {
+    min-height: 540px !important;
+    padding: 1rem !important;
+    border-radius: 1.75rem !important;
+  }
+  
+  .hero-card-left {
+    padding: 1.35rem !important;
+    border-radius: 1.5rem !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .hero-actions-row {
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .hero-actions-row > * {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  /* Ensure cards in horizontal sliders are immediately visible on mobile */
+  .mobile-slider-track .reveal-card {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Mobile Slider Navigation Bar (Dots + Prev/Next Controls) */
+.mobile-slider-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+  padding: 0 0.25rem;
+}
+
+.mobile-slider-dots {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.mobile-slider-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 9999px;
+  background: var(--border-glass);
+  border: 1px solid var(--border-subtle);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  padding: 0;
+}
+
+.mobile-slider-dot.active {
+  width: 22px;
+  background: var(--accent-gradient);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 10px var(--glow-color);
+}
+
+.mobile-slider-arrow {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: var(--surface-pill);
+  border: 1px solid var(--border-glass);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+}
+
+.mobile-slider-arrow:active {
+  transform: scale(0.92);
+  background: var(--surface-pill-hover);
+}
+
+.mobile-slider-arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.mobile-swipe-hint {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 500;
 }

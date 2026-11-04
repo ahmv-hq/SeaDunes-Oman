@@ -45,7 +45,7 @@ export default function Footer({ onOpenBooking }) {
             </p>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', maxWidth: '440px', width: '100%', justifySelf: 'end' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', maxWidth: '440px', width: '100%' }}>
             <div style={{ fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--text-muted)', marginBottom: '0.5rem', fontWeight: 600 }}>
               Join 2,400+ seasonal subscribers
             </div>

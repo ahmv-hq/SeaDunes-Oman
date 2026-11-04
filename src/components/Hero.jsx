@@ -126,7 +126,7 @@ export default function Hero({ onOpenBooking }) {
           </p>
 
           {/* Action Buttons Row */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
+          <div className="hero-actions-row" style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
             <button
               onClick={() => onOpenBooking()}
               className="btn-primary"

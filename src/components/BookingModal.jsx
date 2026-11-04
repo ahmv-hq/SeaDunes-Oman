@@ -58,7 +58,7 @@ export default function BookingModal({ isOpen, onClose, initialData = {} }) {
         style={{
           width: '100%',
           maxWidth: '640px',
-          padding: 'clamp(2rem, 4vw, 2.75rem)',
+          padding: 'clamp(1.25rem, 3.5vw, 2.5rem)',
           position: 'relative',
           maxHeight: '90vh',
           overflowY: 'auto'
