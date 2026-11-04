@@ -534,18 +534,30 @@ body {
     padding-right: 1.25rem !important;
   }
 
-  /* Hero Section Mobile Perfection */
+  /* Hero Section Mobile Perfection & Translucent Glass Text Block */
   .hero-billboard {
-    min-height: 540px !important;
+    min-height: 580px !important;
     padding: 1rem !important;
     border-radius: 1.75rem !important;
+    display: flex !important;
+    align-items: flex-end !important;
   }
   
   .hero-card-left {
-    padding: 1.35rem !important;
+    background: rgba(255, 255, 255, 0.65) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.55) !important;
+    padding: 1.25rem !important;
     border-radius: 1.5rem !important;
     margin: 0 !important;
     max-width: 100% !important;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16) !important;
+  }
+
+  [data-theme="dark"] .hero-card-left {
+    background: rgba(6, 21, 45, 0.62) !important;
+    border: 1px solid rgba(255, 255, 255, 0.16) !important;
   }
 
   .hero-actions-row {

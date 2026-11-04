@@ -1,8 +1,21 @@
-import React, { useState } from 'react';
-import { Menu, X, ArrowUpRight, Sun, Moon } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
+import { Menu, X, ArrowUpRight, Sun, Moon, Compass, Zap, Info, CheckCircle2, MapPin, Phone } from 'lucide-react';
 
 export default function Navbar({ onOpenBooking, theme, toggleTheme }) {
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  // Lock body scroll when mobile menu is open to prevent awkward background scrolling
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileOpen]);
 
   return (
     <header style={{
@@ -139,87 +152,190 @@ export default function Navbar({ onOpenBooking, theme, toggleTheme }) {
 
       </div>
 
-      {/* Mobile Drawer */}
-      {mobileOpen && (
+      {/* Full-Screen Spacious Mobile Drawer (Rendered via Portal to avoid parent stacking context clipping) */}
+      {mobileOpen && typeof document !== 'undefined' && createPortal(
         <div style={{
           position: 'fixed',
-          top: '4.75rem',
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: 'var(--surface-glass-modal)',
-          backdropFilter: 'blur(28px)',
-          WebkitBackdropFilter: 'blur(28px)',
-          padding: '1.5rem 1.5rem 2.5rem',
-          borderTop: '1px solid var(--border-glass)',
+          inset: 0,
+          zIndex: 10000,
+          background: theme === 'light' ? 'rgba(255, 255, 255, 0.98)' : 'rgba(6, 21, 45, 0.98)',
+          backdropFilter: 'blur(30px)',
+          WebkitBackdropFilter: 'blur(30px)',
           display: 'flex',
           flexDirection: 'column',
-          gap: '1.15rem',
-          boxShadow: '0 20px 40px rgba(0,0,0,0.25)',
           overflowY: 'auto',
-          zIndex: 999,
           animation: 'modalFadeIn 0.2s ease-out'
         }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '0.75rem', borderBottom: '1px solid var(--divider)' }}>
-            <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-muted)' }}>Theme Appearance</span>
+          {/* Top Bar inside Menu for Easy Closing & Consistency */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            padding: '0 1.25rem',
+            height: '4.75rem',
+            borderBottom: '1px solid var(--border-glass)',
+            flexShrink: 0
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+              <img
+                src="/images/Sea-Dunes-and-AO-Drive-logo.png"
+                alt="SeaDunes Oman"
+                style={{ height: '2.1rem', width: 'auto', objectFit: 'contain' }}
+              />
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+                <span style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.5px', lineHeight: 1.1 }}>
+                  Sea<span style={{ color: 'var(--accent-cyan)' }}>Dunes</span>
+                </span>
+                <span style={{ fontSize: '0.58rem', textTransform: 'uppercase', letterSpacing: '0.14em', color: 'var(--text-muted)', fontWeight: 600 }}>
+                  Sultanate of Oman
+                </span>
+              </div>
+            </div>
+
             <button
-              onClick={toggleTheme}
+              onClick={() => setMobileOpen(false)}
+              aria-label="Close Menu"
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '0.5rem',
-                background: 'var(--surface-pill)',
-                border: '1px solid var(--border-glass)',
-                color: 'var(--text-primary)',
-                padding: '0.45rem 1rem',
-                borderRadius: '9999px',
-                fontSize: '0.85rem',
-                cursor: 'pointer'
+                justifyContent: 'center',
+                background: 'var(--accent-gradient)',
+                border: 'none',
+                color: '#ffffff',
+                cursor: 'pointer',
+                width: '2.75rem',
+                height: '2.75rem',
+                borderRadius: '0.75rem',
+                boxShadow: '0 4px 15px rgba(2, 132, 199, 0.35)'
               }}
             >
-              {theme === 'dark' ? <><Sun size={15} color="#38bdf8" /> Light Mode</> : <><Moon size={15} color="#0284c7" /> Dark Mode</>}
+              <X size={22} />
             </button>
           </div>
 
-          <a href="#packages" onClick={() => setMobileOpen(false)} style={{ color: 'var(--text-primary)', textDecoration: 'none', fontSize: '1.05rem', fontWeight: 600, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span>Tour Packages (3x3)</span>
-            <ArrowUpRight size={14} color="var(--accent-cyan)" />
-          </a>
-          <a href="#fleet" onClick={() => setMobileOpen(false)} style={{ color: 'var(--text-primary)', textDecoration: 'none', fontSize: '1.05rem', fontWeight: 600, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span>Polaris Buggies & Jet Skis</span>
-            <ArrowUpRight size={14} color="var(--accent-cyan)" />
-          </a>
-          <a href="#about" onClick={() => setMobileOpen(false)} style={{ color: 'var(--text-primary)', textDecoration: 'none', fontSize: '1.05rem', fontWeight: 600, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span>About SeaDunes Oman</span>
-            <ArrowUpRight size={14} color="var(--accent-cyan)" />
-          </a>
-          <a href="#how-it-works" onClick={() => setMobileOpen(false)} style={{ color: 'var(--text-primary)', textDecoration: 'none', fontSize: '1.05rem', fontWeight: 600, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span>How It Works</span>
-            <ArrowUpRight size={14} color="var(--accent-cyan)" />
-          </a>
-          <a href="#contact" onClick={() => setMobileOpen(false)} style={{ color: 'var(--text-primary)', textDecoration: 'none', fontSize: '1.05rem', fontWeight: 600, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span>Contact & Muscat Office</span>
-            <ArrowUpRight size={14} color="var(--accent-cyan)" />
-          </a>
+          {/* Menu Options: Spacious, Touch-Friendly Glass Cards */}
+          <div style={{
+            padding: '1.5rem 1.25rem 3rem',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1.25rem',
+            flex: 1
+          }}>
+            {/* Theme Appearance Pill Card */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              padding: '0.9rem 1.15rem',
+              borderRadius: '1.25rem',
+              background: 'var(--surface-pill)',
+              border: '1px solid var(--border-glass)'
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+                {theme === 'dark' ? <Moon size={18} color="#38bdf8" /> : <Sun size={18} color="#0284c7" />}
+                <span style={{ fontSize: '0.92rem', fontWeight: 600, color: 'var(--text-primary)' }}>
+                  {theme === 'dark' ? 'Dark Mode' : 'Light Mode'}
+                </span>
+              </div>
+              <button
+                onClick={toggleTheme}
+                style={{
+                  padding: '0.45rem 1rem',
+                  borderRadius: '9999px',
+                  background: 'var(--surface-glass-modal)',
+                  border: '1px solid var(--border-glass)',
+                  color: 'var(--accent-cyan)',
+                  fontSize: '0.82rem',
+                  fontWeight: 700,
+                  cursor: 'pointer'
+                }}
+              >
+                Switch to {theme === 'dark' ? 'Light' : 'Dark'}
+              </button>
+            </div>
 
-          <div style={{ paddingTop: '0.5rem', display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
-            <button
-              onClick={() => { setMobileOpen(false); onOpenBooking(); }}
-              className="btn-primary"
-              style={{ width: '100%', justifyContent: 'center', padding: '0.85rem' }}
-            >
-              <span>Book Adventure Now</span>
-              <ArrowUpRight size={15} color="#ffffff" />
-            </button>
-            <a
-              href="tel:+96895800000"
-              className="btn-secondary"
-              style={{ width: '100%', justifyContent: 'center', padding: '0.75rem' }}
-            >
-              <span>Call: +968 9580 0000</span>
-            </a>
+            {/* Nav Link Cards (Big, Beautiful, Effortless to tap) */}
+            <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              {[
+                { label: 'Tour Packages (3x3)', href: '#packages', icon: Compass, badge: '9 Signature' },
+                { label: 'Fleet & Buggies', href: '#fleet', icon: Zap, badge: 'Polaris & Jet Skis' },
+                { label: 'About SeaDunes', href: '#about', icon: Info, badge: 'Since 2005' },
+                { label: 'How It Works', href: '#how-it-works', icon: CheckCircle2, badge: '4 Steps' },
+                { label: 'Contact & Muscat Office', href: '#contact', icon: MapPin, badge: 'Muscat, Oman' },
+              ].map((item, idx) => {
+                const Icon = item.icon;
+                return (
+                  <a
+                    key={idx}
+                    href={item.href}
+                    onClick={() => setMobileOpen(false)}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      padding: '1.05rem 1.25rem',
+                      borderRadius: '1.25rem',
+                      background: 'var(--surface-glass-card)',
+                      border: '1px solid var(--border-glass)',
+                      color: 'var(--text-primary)',
+                      textDecoration: 'none',
+                      boxShadow: 'var(--card-shadow)',
+                      transition: 'all 0.2s ease'
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+                      <div style={{
+                        width: '2.4rem',
+                        height: '2.4rem',
+                        borderRadius: '0.75rem',
+                        background: 'var(--surface-pill)',
+                        border: '1px solid var(--border-glass)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: 'var(--accent-cyan)'
+                      }}>
+                        <Icon size={18} />
+                      </div>
+                      <div>
+                        <div style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)', lineHeight: 1.2 }}>
+                          {item.label}
+                        </div>
+                        <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '2px' }}>
+                          {item.badge}
+                        </div>
+                      </div>
+                    </div>
+                    <ArrowUpRight size={18} color="var(--accent-cyan)" />
+                  </a>
+                );
+              })}
+            </nav>
+
+            {/* Bottom Actions */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginTop: 'auto', paddingTop: '1rem' }}>
+              <button
+                onClick={() => { setMobileOpen(false); onOpenBooking(); }}
+                className="btn-primary"
+                style={{ width: '100%', justifyContent: 'center', padding: '1rem', fontSize: '1rem' }}
+              >
+                <span>Book Adventure Now</span>
+                <ArrowUpRight size={16} color="#ffffff" />
+              </button>
+
+              <a
+                href="tel:+96895800000"
+                className="btn-secondary"
+                style={{ width: '100%', justifyContent: 'center', padding: '0.9rem', fontSize: '0.95rem' }}
+              >
+                <Phone size={16} color="var(--accent-cyan)" />
+                <span>Call: +968 9580 0000</span>
+              </a>
+            </div>
+
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </header>
   );
