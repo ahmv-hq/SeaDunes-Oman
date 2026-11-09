@@ -101,6 +101,9 @@ html {
   scroll-behavior: smooth;
   font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   color-scheme: light dark;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
 }
 
 body {
@@ -110,6 +113,8 @@ body {
   color: var(--text-primary);
   transition: background-color 0.35s ease, color 0.35s ease;
   overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -137,6 +142,7 @@ body {
 /* ==========================================================================
    Page Layout & Compact Section Padding
    ========================================================================== */
+#root,
 .page-wrapper {
   background: var(--bg-page);
   background-image: var(--bg-gradient);
@@ -145,7 +151,10 @@ body {
   color: var(--text-primary);
   transition: background 0.35s ease, color 0.35s ease;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
 }
 
 .section-container {
@@ -357,29 +366,70 @@ body {
   transform: scale(1.06);
 }
 
-.package-card-3x3__body {
+.package-card-3x3__body,
+.package-card-3x3__content {
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   flex: 1;
-  gap: 1.25rem;
+  gap: 1.15rem;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 /* Glassmorphic Card (Fleet & General) */
-.glass-card {
+.glass-card,
+.fleet-card {
   background: var(--surface-glass-card);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border-glass);
   border-radius: 1.75rem;
   box-shadow: var(--card-shadow);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
-.glass-card:hover {
+.glass-card:hover,
+.fleet-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-accent);
+  box-shadow: var(--card-shadow-hover);
+}
+
+/* How It Works Grid & Step Card */
+.how-it-works-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.step-card {
+  background: var(--surface-glass-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-glass);
+  border-radius: 1.75rem;
+  padding: 1.75rem 1.5rem;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.step-card:hover {
   transform: translateY(-4px);
   border-color: var(--border-accent);
   box-shadow: var(--card-shadow-hover);
@@ -471,6 +521,25 @@ body {
 
 @media (min-width: 769px) {
   .mobile-only {
+    display: none !important;
+  }
+}
+
+/* Navbar Navigation Breakpoint (switches to mobile drawer at 1024px to prevent horizontal collision) */
+@media (max-width: 1024px) {
+  .nav-desktop-only {
+    display: none !important;
+  }
+  .nav-mobile-only {
+    display: flex !important;
+  }
+}
+
+@media (min-width: 1025px) {
+  .nav-desktop-only {
+    display: flex !important;
+  }
+  .nav-mobile-only {
     display: none !important;
   }
 }
@@ -627,3 +696,82 @@ body {
   gap: 0.35rem;
   font-weight: 500;
 }
+
+/* ==========================================================================
+   SeaDunes Oman - Stylized Wordmark Branding (No Image Logo)
+   ========================================================================== */
+.brand-wordmark {
+  display: inline-flex;
+  flex-direction: column;
+  text-decoration: none;
+  min-width: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.brand-wordmark:hover {
+  opacity: 0.95;
+  transform: translateY(-1px);
+}
+
+.brand-wordmark-main {
+  display: flex;
+  align-items: baseline;
+  gap: 0.38rem;
+  line-height: 1;
+}
+
+.brand-wordmark-title {
+  font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.brand-wordmark-dunes {
+  background: linear-gradient(135deg, #0284c7 0%, #38bdf8 55%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
+}
+
+.brand-wordmark-country {
+  font-size: clamp(0.68rem, 1.5vw, 0.78rem);
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  line-height: 1;
+  position: relative;
+  top: -1px;
+}
+
+.brand-wordmark-tagline {
+  font-size: clamp(0.55rem, 1.4vw, 0.65rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-top: 0.22rem;
+  line-height: 1;
+}
+
+/* ==========================================================================
+   Arabic (RTL) Typography & Flow Engine
+   ========================================================================== */
+[dir="rtl"], [data-lang="ar"], [dir="rtl"] body {
+  font-family: 'Cairo', 'Tajawal', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+[dir="rtl"] .brand-wordmark-tagline {
+  letter-spacing: 0.04em;
+}
+
+[dir="rtl"] .pill-tag {
+  letter-spacing: 0;
+}
+
+[dir="rtl"] .rtl-mirror {
+  transform: scaleX(-1);
+}
+

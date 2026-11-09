@@ -1,11 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 import { ArrowUpRight, Phone, Star } from 'lucide-react';
 import { companyInfo } from '../data/seadunesData';
+import { useLanguage } from '../context/LanguageContext';
 import { gsap } from 'gsap';
 
 export default function Hero({ onOpenBooking }) {
   const heroRef = useRef(null);
   const videoRef = useRef(null);
+  const { isArabic, t } = useLanguage();
 
   useEffect(() => {
     if (videoRef.current) {
@@ -15,11 +17,11 @@ export default function Hero({ onOpenBooking }) {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
       tl.fromTo('.hero-billboard', { opacity: 0, scale: 0.98 }, { opacity: 1, scale: 1, duration: 0.9, delay: 0.1 })
-        .fromTo('.hero-card-left', { opacity: 0, x: -35 }, { opacity: 1, x: 0, duration: 0.85 }, '-=0.5');
+        .fromTo('.hero-card-left', { opacity: 0, x: isArabic ? 35 : -35 }, { opacity: 1, x: 0, duration: 0.85 }, '-=0.5');
     }, heroRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [isArabic]);
 
   return (
     <section 
@@ -58,7 +60,7 @@ export default function Hero({ onOpenBooking }) {
           muted
           playsInline
           preload="auto"
-          poster="/images/Untitled-design-55.png"
+          poster="/images/1-3_1.png"
           style={{
             position: 'absolute',
             top: 0,
@@ -74,22 +76,23 @@ export default function Hero({ onOpenBooking }) {
           <source src="/videos/hero-coastal-jetski.mp4" type="video/mp4" />
         </video>
 
-        {/* Desktop: Floating Content Card on the Left (100% Preserved) */}
+        {/* Desktop: Floating Content Card on the Left (or Right for RTL) */}
         <div 
           className="hero-card-left desktop-only"
           style={{
             position: 'relative',
             zIndex: 3,
-            maxWidth: '560px',
+            maxWidth: 'min(100%, 560px)',
             width: '100%',
             background: 'var(--surface-glass-modal)',
             backdropFilter: 'blur(28px)',
             WebkitBackdropFilter: 'blur(28px)',
             borderRadius: '2.25rem',
-            padding: 'clamp(2.25rem, 3.5vw, 3.25rem)',
+            padding: 'clamp(2rem, 3.5vw, 3.25rem)',
             boxShadow: 'var(--card-shadow)',
             border: '1px solid var(--border-glass)',
-            margin: '1.5rem 0'
+            margin: '1.5rem 0',
+            boxSizing: 'border-box'
           }}
         >
           {/* Subtitle / Eyebrow */}
@@ -100,29 +103,29 @@ export default function Hero({ onOpenBooking }) {
             marginBottom: '0.9rem',
             letterSpacing: '0.02em'
           }}>
-            Luxury rides, expert instructors, and iconic scenery.
+            {t.hero.subtitle}
           </div>
 
-          {/* Title (Thin / Elegant Poppins Variant) */}
+          {/* Title */}
           <h1 style={{ 
-            fontSize: 'clamp(2.1rem, 3.2vw, 2.75rem)', 
-            fontWeight: 300, 
-            letterSpacing: '-0.3px', 
-            lineHeight: 1.25, 
+            fontSize: 'clamp(1.9rem, 3vw, 2.65rem)', 
+            fontWeight: 800, 
+            letterSpacing: isArabic ? '0' : '-0.5px', 
+            lineHeight: 1.3, 
             color: 'var(--text-primary)', 
             margin: '0 0 1.15rem' 
           }}>
-            Explore Oman’s Coastline with Top-Rated Jet Ski Rentals
+            {t.hero.title}
           </h1>
 
           {/* Description */}
           <p style={{ 
             fontSize: '0.98rem', 
             color: 'var(--text-secondary)', 
-            lineHeight: 1.65, 
+            lineHeight: 1.7, 
             margin: '0 0 2rem' 
           }}>
-            Ride past world-famous islands and coastlines on a private jet ski tour. We provide expert guides, premium machines, and free HD photos so you can just focus on the ride.
+            {t.hero.description}
           </p>
 
           {/* Action Buttons Row */}
@@ -140,12 +143,12 @@ export default function Hero({ onOpenBooking }) {
                 boxShadow: '0 8px 25px rgba(245, 158, 11, 0.45)'
               }}
             >
-              <span>BOOK NOW</span>
-              <ArrowUpRight size={16} color="#ffffff" />
+              <span>{t.hero.bookNow}</span>
+              <ArrowUpRight size={16} color="#ffffff" className="rtl-mirror" />
             </button>
 
             <a
-              href={`tel:${companyInfo.phone}`}
+              href={`tel:${companyInfo.phone.replace(/[^0-9+]/g, '')}`}
               className="btn-secondary"
               style={{ 
                 flex: 1, 
@@ -158,14 +161,14 @@ export default function Hero({ onOpenBooking }) {
               }}
             >
               <Phone size={15} color="var(--accent-cyan)" />
-              <span style={{ fontWeight: 700 }}>Call: {companyInfo.phone}</span>
+              <span style={{ fontWeight: 700 }}>{isArabic ? `${t.hero.callUs}: ${companyInfo.phone}` : `${t.hero.callUs}: ${companyInfo.phone}`}</span>
             </a>
           </div>
 
           {/* Divider */}
           <div style={{ height: '1px', background: 'var(--divider)', marginBottom: '1.5rem' }} />
 
-          {/* Social Proof / Review Row (Expanded Avatars & Clear Rating) */}
+          {/* Social Proof / Review Row */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.15rem', flexWrap: 'wrap' }}>
             {/* Avatar Stack */}
             <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -177,17 +180,17 @@ export default function Hero({ onOpenBooking }) {
               <img
                 src="/images/1-3.png"
                 alt="Rider"
-                style={{ width: '2.35rem', height: '2.35rem', borderRadius: '50%', objectFit: 'cover', border: '2px solid var(--surface-glass-modal)', marginLeft: '-9px' }}
+                style={{ width: '2.35rem', height: '2.35rem', borderRadius: '50%', objectFit: 'cover', border: '2px solid var(--surface-glass-modal)', marginInlineStart: '-9px' }}
               />
               <img
                 src="/images/1-4.png"
                 alt="Rider"
-                style={{ width: '2.35rem', height: '2.35rem', borderRadius: '50%', objectFit: 'cover', border: '2px solid var(--surface-glass-modal)', marginLeft: '-9px' }}
+                style={{ width: '2.35rem', height: '2.35rem', borderRadius: '50%', objectFit: 'cover', border: '2px solid var(--surface-glass-modal)', marginInlineStart: '-9px' }}
               />
               <img
                 src="/images/1-5.png"
                 alt="Rider"
-                style={{ width: '2.35rem', height: '2.35rem', borderRadius: '50%', objectFit: 'cover', border: '2px solid var(--surface-glass-modal)', marginLeft: '-9px' }}
+                style={{ width: '2.35rem', height: '2.35rem', borderRadius: '50%', objectFit: 'cover', border: '2px solid var(--surface-glass-modal)', marginInlineStart: '-9px' }}
               />
             </div>
 
@@ -199,14 +202,14 @@ export default function Hero({ onOpenBooking }) {
                 ))}
               </div>
               <span style={{ fontSize: '0.92rem', fontWeight: 600, color: 'var(--text-secondary)' }}>
-                5.0 (350+ reviews)
+                {t.hero.reviewsText}
               </span>
             </div>
           </div>
 
         </div>
 
-        {/* Mobile: 100% Video Visibility (No card/modal box, max 3 words, pure action) */}
+        {/* Mobile: 100% Video Visibility */}
         <div 
           className="hero-mobile-overlay mobile-only"
           style={{
@@ -229,9 +232,9 @@ export default function Hero({ onOpenBooking }) {
             lineHeight: 1.05,
             margin: 0,
             textShadow: '0 4px 20px rgba(0, 0, 0, 0.9), 0 2px 8px rgba(0, 0, 0, 0.7)',
-            textTransform: 'uppercase'
+            textTransform: isArabic ? 'none' : 'uppercase'
           }}>
-            Ride The Waves
+            {t.hero.mobileTitle}
           </h1>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', width: '100%', flexWrap: 'wrap' }}>
@@ -239,9 +242,9 @@ export default function Hero({ onOpenBooking }) {
               onClick={() => onOpenBooking()}
               className="btn-primary"
               style={{
-                flex: 1,
-                minWidth: '135px',
-                padding: '0.85rem 1.5rem',
+                flex: '1 1 135px',
+                minWidth: 0,
+                padding: '0.85rem 1.25rem',
                 fontSize: '0.92rem',
                 background: 'linear-gradient(135deg, #f59e0b 0%, #ea580c 100%)',
                 boxShadow: '0 8px 25px rgba(0, 0, 0, 0.6)',
@@ -250,16 +253,16 @@ export default function Hero({ onOpenBooking }) {
                 justifyContent: 'center'
               }}
             >
-              <span>Book Now</span>
-              <ArrowUpRight size={15} color="#ffffff" />
+              <span>{t.hero.mobileBook}</span>
+              <ArrowUpRight size={15} color="#ffffff" className="rtl-mirror" />
             </button>
 
             <a
-              href={`tel:${companyInfo.phone}`}
+              href={`tel:${companyInfo.phone.replace(/[^0-9+]/g, '')}`}
               className="btn-secondary"
               style={{
-                flex: 1,
-                minWidth: '135px',
+                flex: '1 1 135px',
+                minWidth: 0,
                 padding: '0.85rem 1.25rem',
                 fontSize: '0.88rem',
                 background: 'rgba(0, 0, 0, 0.45)',
@@ -272,7 +275,7 @@ export default function Hero({ onOpenBooking }) {
               }}
             >
               <Phone size={14} color="#38bdf8" />
-              <span>Call Us</span>
+              <span>{t.hero.mobileCall}</span>
             </a>
           </div>
         </div>

@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { companyInfo } from '../data/seadunesData';
 import { Phone, Mail, MapPin, ArrowUpRight, Check, Send } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
+
+const currentYear = new Date().getFullYear();
 
 export default function Footer({ onOpenBooking }) {
   const [emailSub, setEmailSub] = useState('');
   const [subscribed, setSubscribed] = useState(false);
+  const { isArabic, t } = useLanguage();
 
   const handleSub = (e) => {
     e.preventDefault();
@@ -24,10 +28,10 @@ export default function Footer({ onOpenBooking }) {
     }}>
       <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
         
-        {/* ROW 1: Summary & Newsletter Box (No + tags) */}
+        {/* ROW 1: Summary & Newsletter Box */}
         <div style={{ 
           display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', 
           gap: '2rem', 
           alignItems: 'center',
           paddingBottom: '2.5rem',
@@ -37,17 +41,17 @@ export default function Footer({ onOpenBooking }) {
             <p style={{ 
               fontSize: '1rem', 
               color: 'var(--text-secondary)', 
-              lineHeight: 1.6, 
+              lineHeight: 1.7, 
               maxWidth: '520px',
               margin: 0
             }}>
-              Pioneering luxury desert safaris, coastal yacht charters, and Polaris dune adventures across Oman since 2005. Verified local guides, best price guarantee, zero day-wasters.
+              {t.footer.summary}
             </p>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', maxWidth: '440px', width: '100%' }}>
-            <div style={{ fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--text-muted)', marginBottom: '0.5rem', fontWeight: 600 }}>
-              Join 2,400+ seasonal subscribers
+            <div style={{ fontSize: '0.8rem', textTransform: isArabic ? 'none' : 'uppercase', letterSpacing: '0.08em', color: 'var(--text-muted)', marginBottom: '0.5rem', fontWeight: 600 }}>
+              {t.footer.subHeading}
             </div>
             
             <form onSubmit={handleSub} style={{ 
@@ -63,7 +67,7 @@ export default function Footer({ onOpenBooking }) {
               <input
                 type="email"
                 required
-                placeholder="Enter email for seasonal rates"
+                placeholder={t.footer.emailPlaceholder}
                 value={emailSub}
                 onChange={(e) => setEmailSub(e.target.value)}
                 style={{ 
@@ -79,11 +83,11 @@ export default function Footer({ onOpenBooking }) {
               <button type="submit" className="btn-primary" style={{ padding: '0.55rem 1.25rem', fontSize: '0.82rem', flexShrink: 0 }}>
                 {subscribed ? (
                   <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                    <Check size={13} color="#ffffff" /> Joined
+                    <Check size={13} color="#ffffff" /> {t.footer.btnSubscribed}
                   </span>
                 ) : (
                   <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                    Subscribe <Send size={12} />
+                    {t.footer.btnSubscribe} <Send size={12} className="rtl-mirror" />
                   </span>
                 )}
               </button>
@@ -91,7 +95,7 @@ export default function Footer({ onOpenBooking }) {
           </div>
         </div>
 
-        {/* ROW 2: Giant Oversized Brand Typography */}
+        {/* ROW 2: Giant Oversized Brand Typography (Stylized Wordmark - No Logo Image) */}
         <div style={{ 
           padding: 'clamp(2rem, 4vw, 3.5rem) 0', 
           borderBottom: '1px solid var(--divider)',
@@ -100,28 +104,29 @@ export default function Footer({ onOpenBooking }) {
           overflow: 'hidden'
         }}>
           <h1 style={{ 
-            fontSize: 'clamp(2.25rem, 9.2vw, 9.5rem)', 
-            fontWeight: 800, 
-            letterSpacing: '-0.03em', 
-            lineHeight: 0.9, 
+            fontSize: isArabic ? 'clamp(1.75rem, 7.5vw, 7.5rem)' : 'clamp(1.5rem, 8.5vw, 8.5rem)', 
+            fontWeight: 900, 
+            letterSpacing: isArabic ? '0' : '-0.03em', 
+            lineHeight: 1.05, 
             margin: 0,
-            textTransform: 'uppercase',
-            background: 'var(--accent-gradient)',
+            textTransform: isArabic ? 'none' : 'uppercase',
+            background: 'linear-gradient(135deg, #0284c7 0%, #38bdf8 45%, #f59e0b 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             display: 'inline-block',
             userSelect: 'none',
             whiteSpace: 'nowrap',
-            filter: 'drop-shadow(0 15px 30px var(--glow-color))'
+            filter: 'drop-shadow(0 15px 30px var(--glow-color))',
+            maxWidth: '100%'
           }}>
-            Seadunes Oman
+            {t.brand.footerBanner}
           </h1>
         </div>
 
-        {/* ROW 3: 4 Column Contact & Navigation (Clean headings, no + tags) */}
+        {/* ROW 3: 4 Column Contact & Navigation */}
         <div style={{ 
           display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 210px), 1fr))', 
           gap: 'clamp(1.75rem, 3.5vw, 2.75rem)', 
           padding: 'clamp(2.5rem, 4vw, 3.5rem) 0',
           borderBottom: '1px solid var(--divider)'
@@ -129,89 +134,133 @@ export default function Footer({ onOpenBooking }) {
           
           {/* Headquarters */}
           <div>
-            <div style={{ fontSize: '0.82rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--accent-cyan)', fontWeight: 700, marginBottom: '1rem' }}>
-              Headquarters
+            <div style={{ fontSize: '0.82rem', textTransform: isArabic ? 'none' : 'uppercase', letterSpacing: '0.1em', color: 'var(--accent-cyan)', fontWeight: 700, marginBottom: '1rem' }}>
+              {t.footer.headquarters}
             </div>
             <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.65 }}>
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.55rem', marginBottom: '0.65rem' }}>
                 <MapPin size={16} color="var(--accent-cyan)" style={{ marginTop: '3px', flexShrink: 0 }} />
-                <span>Alraya Tower, Floor 8<br />Ghala Business District, Muscat<br />Sultanate of Oman</span>
+                <span>
+                  {t.footer.addressLines[0]}<br />
+                  {t.footer.addressLines[1]}<br />
+                  {t.footer.addressLines[2]}
+                </span>
               </div>
-              <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: '0.65rem', paddingLeft: '1.45rem' }}>
-                Open Daily: 07:30 AM to 10:00 PM (GST)
+              <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: '0.65rem', paddingInlineStart: '1.45rem' }}>
+                {t.footer.workingHours}
               </div>
             </div>
           </div>
 
           {/* Direct Phone & WhatsApp */}
           <div>
-            <div style={{ fontSize: '0.82rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--accent-cyan)', fontWeight: 700, marginBottom: '1rem' }}>
-              Bookings & Dispatch
+            <div style={{ fontSize: '0.82rem', textTransform: isArabic ? 'none' : 'uppercase', letterSpacing: '0.1em', color: 'var(--accent-cyan)', fontWeight: 700, marginBottom: '1rem' }}>
+              {t.footer.dispatch}
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', fontSize: '0.9rem' }}>
-              <a href={`tel:${companyInfo.phone}`} style={{ color: 'var(--text-primary)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.55rem', transition: 'color 0.2s' }}>
-                <Phone size={14} color="var(--accent-cyan)" />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', fontSize: '0.9rem' }}>
+              <a 
+                href={`tel:${companyInfo.phone.replace(/[^0-9+]/g, '')}`} 
+                style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', color: 'var(--text-secondary)', textDecoration: 'none' }}
+              >
+                <Phone size={15} color="var(--accent-cyan)" />
                 <span style={{ fontWeight: 600 }}>{companyInfo.phone}</span>
               </a>
-              <a href={`tel:${companyInfo.secondaryPhone}`} style={{ color: 'var(--text-primary)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.55rem', transition: 'color 0.2s' }}>
-                <Phone size={14} color="var(--accent-cyan)" />
-                <span>{companyInfo.secondaryPhone}</span>
+
+              <a 
+                href={`tel:${companyInfo.secondaryPhone.replace(/[^0-9+]/g, '')}`} 
+                style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', color: 'var(--text-muted)', textDecoration: 'none' }}
+              >
+                <Phone size={15} />
+                <span>{companyInfo.secondaryPhone} (VIP Line)</span>
               </a>
-              <a href={`mailto:${companyInfo.email}`} style={{ color: 'var(--text-primary)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.55rem', transition: 'color 0.2s' }}>
-                <Mail size={14} color="var(--accent-cyan)" />
+
+              <a 
+                href={`mailto:${companyInfo.email}`} 
+                style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', color: 'var(--text-secondary)', textDecoration: 'none' }}
+              >
+                <Mail size={15} color="var(--accent-cyan)" />
                 <span>{companyInfo.email}</span>
               </a>
             </div>
           </div>
 
-          {/* Quick Package Links */}
+          {/* Quick Navigation Links */}
           <div>
-            <div style={{ fontSize: '0.82rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--accent-cyan)', fontWeight: 700, marginBottom: '1rem' }}>
-              Featured Expeditions
+            <div style={{ fontSize: '0.82rem', textTransform: isArabic ? 'none' : 'uppercase', letterSpacing: '0.1em', color: 'var(--accent-cyan)', fontWeight: 700, marginBottom: '1rem' }}>
+              {t.footer.quickNav}
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem', fontSize: '0.86rem' }}>
-              <a href="#packages" style={{ color: 'var(--text-secondary)', textDecoration: 'none', transition: 'color 0.2s' }}>Luxury Daymaniyat Yacht Cruise</a>
-              <a href="#packages" style={{ color: 'var(--text-secondary)', textDecoration: 'none', transition: 'color 0.2s' }}>Wahiba Sands Desert Safari</a>
-              <a href="#packages" style={{ color: 'var(--text-secondary)', textDecoration: 'none', transition: 'color 0.2s' }}>Wadi Shab Emerald Canyon Hike</a>
-              <a href="#packages" style={{ color: 'var(--text-secondary)', textDecoration: 'none', transition: 'color 0.2s' }}>Dimaniyat Turtle Snorkel Safari</a>
-              <a href="#packages" style={{ color: 'var(--text-secondary)', textDecoration: 'none', transition: 'color 0.2s' }}>Nizwa Fort & Jebel Shams Grand Canyon</a>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.88rem' }}>
+              <a href="#packages" className="nav-link" style={{ color: 'var(--text-secondary)' }}>
+                {t.nav.packages}
+              </a>
+              <a href="#fleet" className="nav-link" style={{ color: 'var(--text-secondary)' }}>
+                {t.nav.fleet}
+              </a>
+              <a href="#about" className="nav-link" style={{ color: 'var(--text-secondary)' }}>
+                {t.nav.about}
+              </a>
+              <a href="#how-it-works" className="nav-link" style={{ color: 'var(--text-secondary)' }}>
+                {t.nav.howItWorks}
+              </a>
+              <button 
+                onClick={() => onOpenBooking()} 
+                style={{ 
+                  background: 'none', 
+                  border: 'none', 
+                  padding: 0, 
+                  textAlign: 'inherit', 
+                  color: 'var(--accent-cyan)', 
+                  fontWeight: 600, 
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '4px'
+                }}
+              >
+                <span>{t.nav.bookRide}</span>
+                <ArrowUpRight size={13} className="rtl-mirror" />
+              </button>
             </div>
           </div>
 
-          {/* AO Drive Fleet App */}
+          {/* Booking Dispatch Button */}
           <div>
-            <div style={{ fontSize: '0.82rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--accent-cyan)', fontWeight: 700, marginBottom: '1rem' }}>
-              AO Drive Fleet App
+            <div style={{ fontSize: '0.82rem', textTransform: isArabic ? 'none' : 'uppercase', letterSpacing: '0.1em', color: 'var(--accent-cyan)', fontWeight: 700, marginBottom: '1rem' }}>
+              {isArabic ? 'الحجز السريع' : 'Instant Reservation'}
             </div>
-            <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.55, marginBottom: '1rem' }}>
-              Official mobile app for instant electric scooter unlocks and Polaris machine dispatch across Muscat.
+            <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: 1.55, margin: '0 0 1rem' }}>
+              {isArabic 
+                ? 'تواصل معنا مباشرة عبر واتساب لحجز اليخوت الخاصة أو عربات الصحراء دون أي تأخير.' 
+                : 'Message our local team on WhatsApp for guaranteed same-day dispatch and private charters.'}
             </p>
-            <button onClick={() => onOpenBooking()} className="btn-primary" style={{ width: '100%', justifyContent: 'center', padding: '0.7rem 1rem' }}>
-              <span>Reserve Adventure</span>
-              <ArrowUpRight size={13} color="#ffffff" />
+            <button
+              onClick={() => onOpenBooking()}
+              className="btn-primary"
+              style={{ width: '100%', justifyContent: 'center', padding: '0.75rem 1.25rem' }}
+            >
+              <span>{t.nav.bookRide}</span>
+              <ArrowUpRight size={14} color="#ffffff" className="rtl-mirror" />
             </button>
           </div>
 
         </div>
 
-        {/* ROW 4: Bottom Credits & Legal */}
+        {/* ROW 4: Copyright & Clean Meta */}
         <div style={{ 
-          paddingTop: '2rem', 
           display: 'flex', 
           justifyContent: 'space-between', 
           alignItems: 'center', 
+          paddingTop: '2rem', 
+          fontSize: '0.8rem', 
+          color: 'var(--text-muted)', 
           flexWrap: 'wrap', 
-          gap: '1rem', 
-          fontSize: '0.82rem', 
-          color: 'var(--text-muted)' 
+          gap: '1rem' 
         }}>
           <div>
-            © 2005-2026 SeaDunes Oman & Active Oman Drive (AO Drive).
+            © {currentYear} {t.brand.footerBanner}. {t.footer.copyright}
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap' }}>
-            <span>Oman Ministry of Heritage & Tourism License #4555</span>
-            <span style={{ cursor: 'pointer' }}>Privacy Policy</span>
-            <span style={{ cursor: 'pointer' }}>Terms of Service</span>
+          <div>
+            {t.footer.legal}
           </div>
         </div>
 

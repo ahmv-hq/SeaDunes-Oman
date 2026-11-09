@@ -1,11 +1,16 @@
 export const companyInfo = {
   name: "SeaDunes",
+  nameAr: "سي ديونز",
   altName: "Active Oman Drive (AO Drive)",
+  altNameAr: "أكتيف عمان درايف",
   tagline: "Unleash Oman Adventures",
+  taglineAr: "عش روعة المغامرة في عمان",
   subTagline: "Desert Safari · Coastal Yacht Cruises · Polaris Buggies · Jet Ski Expeditions",
+  subTaglineAr: "سفاري صحراوي · رحلات يخوت بحرية · عربات بولاريس · رحلات دراجات مائية",
   founded: "2005",
   experienceYears: "20+",
   headquarters: "Alraya Tower, Floor 8, Ghala, Muscat, Sultanate of Oman",
+  headquartersAr: "برج الرؤية، الطابق 8، غلا، مسقط، سلطنة عمان",
   phone: "+968 98886643",
   secondaryPhone: "+968 90886666",
   appPhone: "+968 77751777",
@@ -14,10 +19,10 @@ export const companyInfo = {
   instagram: "@active.oman.drive",
   instagramUrl: "https://www.instagram.com/active.oman.drive",
   stats: [
-    { value: "20+", label: "Years Experience", sub: "Serving thrill-seekers since 2005" },
-    { value: "9", label: "Curated Packages", sub: "From Daymaniyat to Jebel Shams" },
-    { value: "24+", label: "Fleet Vehicles", sub: "Polaris Buggies & Quad ATVs" },
-    { value: "100%", label: "Local Omani Guides", sub: "Certified, English & Arabic speaking" }
+    { value: "20+", label: "Years Experience", labelAr: "عاماً من الخبرة", sub: "Serving thrill-seekers since 2005", subAr: "نخدم عشاق المغامرة منذ عام 2005" },
+    { value: "9", label: "Curated Packages", labelAr: "باقات مختارة", sub: "From Daymaniyat to Jebel Shams", subAr: "من جزر الديمانيات إلى جبل شمس" },
+    { value: "24+", label: "Fleet Vehicles", labelAr: "مركبة وآلية بالأسطول", sub: "Polaris Buggies & Quad ATVs", subAr: "عربات بولاريس ودراجات دفع رباعي" },
+    { value: "100%", label: "Local Omani Guides", labelAr: "مرشدون محليون عمانيون", sub: "Certified, English & Arabic speaking", subAr: "معتمدون، يتحدثون العربية والإنجليزية" }
   ]
 };
 
@@ -26,191 +31,326 @@ export const tourPackages = [
     id: "pkg-1",
     num: "01",
     title: "Luxury Private Yacht Cruise",
+    titleAr: "رحلة اليخت الفاخر الخاصة",
     badge: "Most Popular",
+    badgeAr: "الأكثر طلباً",
     location: "Daymaniyat Islands Nature Reserve, Muscat",
+    locationAr: "محمية جزر الديمانيات الطبيعية، مسقط",
     duration: "Full Day / 6-8 Hours",
+    durationAr: "يوم كامل / 6-8 ساعات",
     groupSize: "Up to 12 Guests",
+    groupSizeAr: "حتى 12 شخصاً",
     price: "OMR 280",
+    priceAr: "280 ر.ع.",
     pricePeriod: "private charter",
-    image: "/images/Untitled-design-55.png",
-    fallbackImages: ["/images/Untitled-design-42.png", "/images/jet-ski-activity.png"],
+    pricePeriodAr: "يخت خاص كامل",
+    image: "/images/1-3_1.png",
+    fallbackImages: ["/images/travel-2.png", "/images/1-2_1.png"],
     overview: "Experience Muscat in style and comfort on a private luxury yacht cruise. Enjoy views of the city's stunning coastline while spending time with family, friends, or colleagues on a spacious yacht.",
+    overviewAr: "استمتع بأرقى درجات الفخامة والراحة على متن يخت خاص في مسقط. استكشف السواحل العمانية البديعة ومحمية جزر الديمانيات الساحرة برفقة العائلة أو الأصدقاء وسط مياه فيروزية لا تُنسى.",
     highlights: [
       "Dimaniyat Islands 9-island marine sanctuary tour",
       "Included Jet Ski, Kayak, and Banana Boat rides",
       "Snorkel with wild sea turtles, rays, and dolphins",
       "Sunset golden-hour cruise along Muscat coastline"
     ],
+    highlightsAr: [
+      "جولة بحرية في الأرخبيل المرجاني لجزر الديمانيات التسع",
+      "تشمل دراجة مائية (جيت سكي)، قوارب الكاياك، وقارب الموزة الممتع",
+      "السباحة والسنوركلينج مع السلاحف البحرية والدلافين والأسماك الملونة",
+      "إبحار عند ساعة الغروب الذهبية بمحاذاة سواحل مسقط الوعرة"
+    ],
     inclusions: ["Private Luxury Yacht", "Jetski & Water Toys", "Snorkeling Gear", "Fresh Refreshments & Fruits", "Certified Marine Captain"],
+    inclusionsAr: ["يخت فاخر خاص ومريح", "دراجة مائية وألعاب بحرية", "معدات السنوركلينج كاملة", "فواكه طازجة ومشروبات منعشة", "قبطان بحري عماني معتمد"],
     customizable: true
   },
   {
     id: "pkg-2",
     num: "02",
     title: "Wahiba Sands Desert & Wadi Bani Khalid",
+    titleAr: "سفاري رمال وهيبة ووادي بني خالد",
     badge: "Desert Safari",
+    badgeAr: "سفاري صحراوي",
     location: "Wahiba Sands & Al-Hajar Mountains",
+    locationAr: "رمال وهيبة وسلسلة جبال الحجر",
     duration: "Full Day / 8-9 Hours",
+    durationAr: "يوم كامل / 8-9 ساعات",
     groupSize: "2 - 6 Guests per 4WD",
+    groupSizeAr: "2 - 6 ضيوف لكل سيارة 4WD",
     price: "OMR 95",
+    priceAr: "95 ر.ع.",
     pricePeriod: "per person",
-    image: "/images/Untitled-design-54.png",
-    fallbackImages: ["/images/Quad-Bike-Safari-activity.png", "/images/dune-buggy.png"],
+    pricePeriodAr: "للشخص الواحد",
+    image: "/images/Wahiba-Sands2.png",
+    fallbackImages: ["/images/Wahiba-Sands.png", "/images/1-5_1.png"],
     overview: "Discover Oman's natural wonders without the stresses of driving. Settle into an air-conditioned 4WD, marvel at the turquoise freshwater pools of Wadi Bani Khalid, and absorb the stillness and magic of towering Wahiba Sands dunes.",
+    overviewAr: "اكتشف عجائب عمان الطبيعية بدون عناء القيادة. استرخِ في سيارة دفع رباعي مريحة ومكيفة، وتأمل مسابح المياه العذبة الفيروزية بوادي بني خالد، واستشعر سحر وسكون الكثبان الشاهقة في رمال وهيبة.",
     highlights: [
       "Fanja 400-year-old ancient mud-brick village & panoramic watchtowers",
       "Swim in the deep crystal pools & hidden caves of Wadi Bani Khalid",
       "Dune bashing across towering sand waves in specialized 4WD",
       "Traditional Bedouin house hospitality with authentic Omani coffee and dates"
     ],
-    inclusions: ["Door-to-door 4WD Transfer", "Expert Omani Driver-Guide", "Wadi Bani Khalid Entry", "Bedouin Tea & Dates", "Sandboarding Gear"]
+    highlightsAr: [
+      "زيارة قرية فنجاء التراثية التي يتجاوز عمرها 400 عام وأبراج المراقبة",
+      "السباحة في المسابح الطبيعية الصافية والكهوف في وادي بني خالد",
+      "صعود ومناورة الكثبان الرملية الذهبية الشاهقة بسيارات الدفع الرباعي",
+      "ضيافة بيت بدوي أصيلة مع القهوة العمانية الزكية والتمر الفاخر"
+    ],
+    inclusions: ["Door-to-door 4WD Transfer", "Expert Omani Driver-Guide", "Wadi Bani Khalid Entry", "Bedouin Tea & Dates", "Sandboarding Gear"],
+    inclusionsAr: ["نقل مباشر ذهاباً وإياباً بسيارة 4WD", "سائق ومرشد عماني محترف", "رسوم دخول وادي بني خالد", "قهوة عمانية وشاي بدوي مع التمر", "معدات التزلج على الرمال"]
   },
   {
     id: "pkg-3",
     num: "03",
     title: "Wadi Shab & Bimmah Sinkhole Adventure",
+    titleAr: "مغامرة وادي شاب وهوية نجم (بمة)",
     badge: "Trek & Swim",
+    badgeAr: "مشي وسباحة",
     location: "Tiwi Coastline & Bimmah, Oman",
+    locationAr: "ساحل طيوي وهوية نجم، عمان",
     duration: "Full Day / 8 Hours",
+    durationAr: "يوم كامل / 8 ساعات",
     groupSize: "Small Group / Private",
+    groupSizeAr: "مجموعة خاصة أو صغيرة",
     price: "OMR 75",
+    priceAr: "75 ر.ع.",
     pricePeriod: "per person",
-    image: "/images/3-6.png",
-    fallbackImages: ["/images/3-8.png", "/images/4-2.png"],
+    pricePeriodAr: "للشخص الواحد",
+    image: "/images/Bimmah.jpg",
+    fallbackImages: ["/images/DSC02632-Copy-1-2000x1200-1.jpg", "/images/11-1.png"],
     overview: "A thrilling adventure along the coastal highway to Wadi Shab. Hike through dramatic canyon gorges, swim through emerald rock pools into a submerged waterfall cave, and visit the mysterious Bimmah limestone sinkhole.",
+    overviewAr: "مغامرة مذهلة بمحاذاة الطريق الساحلي وصولاً إلى وادي شاب. امشِ بين ممرات المضيق الصخرية المهيبة، واسبح عبر البرك الزمردية حتى كهف الشلال السري، ثم زر هوية نجم الشهيرة بمياهها الفيروزية.",
     highlights: [
       "Boat crossing into the opening of Wadi Shab gorge",
       "45-minute scenic canyon hike between towering cliff faces",
       "Swim through 3 natural freshwater pools into the hidden cave waterfall",
       "Photo stop and swim at Bimmah turquoise limestone sinkhole"
     ],
-    inclusions: ["Round-trip Hotel Transport", "Local Wadi Hiking Guide", "Boat Crossing Fee", "Fresh Lunch & Refreshments", "Waterproof Bag"]
+    highlightsAr: [
+      "عبور بالقارب الصغير إلى مدخل مضيق وادي شاب",
+      "مسار مشي جبلي رائع لمدة 45 دقيقة بين الجدران الصخرية العملاقة",
+      "السباحة عبر 3 مسابح طبيعية عذبة وصولاً للشلال داخل الكهف",
+      "استراحة سباحة والتقاط الصور في منخفض هوية نجم الجيري الخلاب"
+    ],
+    inclusions: ["Round-trip Hotel Transport", "Local Wadi Hiking Guide", "Boat Crossing Fee", "Fresh Lunch & Refreshments", "Waterproof Bag"],
+    inclusionsAr: ["نقل خاص من وإلى الفندق", "مرشد محلي متخصص في مسارات الأودية", "رسوم عبور القارب بالوادي", "وجبة غداء ومشروبات طازجة", "حقيبة مقاومة للماء لحماية الأجهزة"]
   },
   {
     id: "pkg-4",
     num: "04",
     title: "Snorkeling at Dimaniyat Islands & Dolphin Watching",
+    titleAr: "سنوركلينج جزر الديمانيات ومشاهدة الدلافين",
     badge: "Marine Wildlife",
+    badgeAr: "حياة بحرية",
     location: "Dimaniyat Islands Reserve, 70 KM west of Muscat",
+    locationAr: "محمية جزر الديمانيات، 70 كم غرب مسقط",
     duration: "Half Day / 4-5 Hours",
+    durationAr: "نصف يوم / 4-5 ساعات",
     groupSize: "Up to 15 Guests",
+    groupSizeAr: "حتى 15 شخصاً",
     price: "OMR 35",
+    priceAr: "35 ر.ع.",
     pricePeriod: "per person",
-    image: "/images/4-5.png",
-    fallbackImages: ["/images/2-4.png", "/images/12.png"],
+    pricePeriodAr: "للشخص الواحد",
+    image: "/images/1-8.png",
+    fallbackImages: ["/images/2-8.png", "/images/3-5.png"],
     overview: "Cruising out from Muscat marina to the protected Daymaniyat Islands marine nature reserve (established in 1993). Known as the 'Jewels of Oman', with crystal-clear turquoise waters and rich biodiversity.",
+    overviewAr: "انطلق بالقارب السريع من مارينا مسقط نحو محمية جزر الديمانيات الطبيعية المعروفة بـ 'لؤلؤة عمان'. مياه بلورية فيروزية وشعاب مرجانية نقية تحتضن تشكيلة نادرة من الكائنات البحرية.",
     highlights: [
       "Chance to witness pods of wild dolphins playing alongside the speedboat",
       "Two distinct guided snorkeling stops among pristine coral reefs",
       "Swim alongside green sea turtles, stingrays, and vibrant coral fish",
       "Pristine white sand beach relaxation on permitted islands"
     ],
-    inclusions: ["Nature Reserve Permits", "Snorkeling Masks & Fins", "Life Vests", "Cold Drinks & Light Snacks", "Experienced Snorkel Guide"]
+    highlightsAr: [
+      "فرصة رائعة لمشاهدة أسراب الدلافين وهي تقفز بجانب القارب السريع",
+      "وقفتان مخصصتان للسنوركلينج بين أجمل الشعاب المرجانية الحية",
+      "السباحة بالقرب من السلاحف البحرية الخضراء وأسماك المرجان الملونة",
+      "استرخاء على الرمال البيضاء الناعمة لشواطئ الجزر المصرح بها"
+    ],
+    inclusions: ["Nature Reserve Permits", "Snorkeling Masks & Fins", "Life Vests", "Cold Drinks & Light Snacks", "Experienced Snorkel Guide"],
+    inclusionsAr: ["تصاريح دخول المحمية الرسمية", "أقنعة وزعانف سنوركلينج حديثة", "سترات نجاة لجميع الأعمار", "مشروبات باردة ووجبات خفيفة", "مرشد سنوركلينج وإنقاذ بحري خبير"]
   },
   {
     id: "pkg-5",
     num: "05",
     title: "Nizwa Fort, Souq, Misfat Al Abriyeen & Jebel Shams",
+    titleAr: "قلعة نزوى وسوقها، مسفاة العبريين وجبل شمس",
     badge: "Mountain & Heritage",
+    badgeAr: "جبال وتراث",
     location: "Nizwa & Jebel Shams (Grand Canyon of Arabia)",
+    locationAr: "نزوى وجبل شمس (جراند كانيون الشرق الأوسط)",
     duration: "Full Day / 9 Hours",
+    durationAr: "يوم كامل / 9 ساعات",
     groupSize: "Up to 5 Guests",
+    groupSizeAr: "حتى 5 ضيوف بسيارة خاصة",
     price: "OMR 110",
+    priceAr: "110 ر.ع.",
     pricePeriod: "per person",
-    image: "/images/7_1.png",
-    fallbackImages: ["/images/4_3.png", "/images/11_2.png"],
+    pricePeriodAr: "للشخص الواحد",
+    image: "/images/Nizwa-Misfat-Al-Abriyeen-And-Al-Hamra.jpg",
+    fallbackImages: ["/images/7-2.png", "/images/1-10.png"],
     overview: "Journey back through centuries of Omani history. Explore the legendary Nizwa Fort with its massive circular cannon tower, walk through the ancient mud village of Misfat Al Abriyeen, and ascend to the 3,000m heights of Jebel Shams.",
+    overviewAr: "سافر عبر قرون من التاريخ العماني المجيد. استكشف قلعة نزوى الشهيرة ببرجها الدائري الضخم، وتجول في قرية مسفاة العبريين التراثية المعلقة، ثم اصعد إلى قمة جبل شمس بارتفاع 3000 متر.",
     highlights: [
       "17th-century Nizwa Round Tower Fortress & heritage museum",
       "Authentic Nizwa Souq: silver khanjar daggers, pottery, spices & date market",
       "Mud-house mountain village of Misfat Al Abriyeen with ancient Falaj irrigation",
       "Panoramic vistas over the 1,000m deep Wadi Ghul (Grand Canyon of Arabia)"
     ],
-    inclusions: ["Private 4WD Vehicle", "Knowledgeable Omani Historian Guide", "Fort Entry Tickets", "Traditional Omani Lunch"]
+    highlightsAr: [
+      "قلعة نزوى التاريخية ببرجها المدفعي ومتحفها التراثي الغني",
+      "سوق نزوى الأصيل: الخناجر العمانية الفضية، الفخاريات، وسوق التمور",
+      "قرية مسفاة العبريين بمنازلها الطينية القديمة ونظام الأفلاج التاريخي",
+      "إطلالات مهيبة على وادي غول بعمق يتجاوز 1000 متر (جراند كانيون عمان)"
+    ],
+    inclusions: ["Private 4WD Vehicle", "Knowledgeable Omani Historian Guide", "Fort Entry Tickets", "Traditional Omani Lunch"],
+    inclusionsAr: ["سيارة دفع رباعي خاصة ومكيفة", "مرشد تاريخي عماني خبير", "تذاكر الدخول الرسمية لقلعة نزوى", "غداء عماني تقليدي أصيل"]
   },
   {
     id: "pkg-6",
     num: "06",
     title: "Muscat City Tour & Sultan Qaboos Grand Mosque",
+    titleAr: "جولة مسقط وجامع السلطان قابوس الأكبر",
     badge: "Cultural Highlights",
+    badgeAr: "معالم ثقافية",
     location: "Muscat Capital City",
+    locationAr: "العاصمة مسقط",
     duration: "Half Day / 4 Hours",
+    durationAr: "نصف يوم / 4 ساعات",
     groupSize: "Private / Group",
+    groupSizeAr: "خاصة أو ضمن مجموعة",
     price: "OMR 45",
+    priceAr: "45 ر.ع.",
     pricePeriod: "per person",
-    image: "/images/7_3.png",
-    fallbackImages: ["/images/3_3.png", "/images/1-9_1.png"],
+    pricePeriodAr: "للشخص الواحد",
+    image: "/images/large.jpg",
+    fallbackImages: ["/images/Untitled-design-57.png", "/images/1_1.png"],
     overview: "A comprehensive half-day discovery of Oman's capital. Marvel at the breathtaking architecture of the Grand Mosque, experience vibrant Muttrah Souq, and view the Portuguese twin fortresses guarding Old Muscat harbor.",
+    overviewAr: "جولة شاملة لنصف يوم في قلب العاصمة العمانية. انبهر بفخامة العمارة الإسلامية في جامع السلطان قابوس الأكبر، واستمتع بنفحات اللبان في سوق مطرح، وشاهد قلاعي الجلالي والميراني الشامختين.",
     highlights: [
       "Sultan Qaboos Grand Mosque with hand-woven Persian carpet & Swarovski chandelier",
       "Stroll the Muttrah Corniche & traditional Frankincense souq",
       "Al Alam Palace - modern Islamic ceremonial palace of the Sultan",
       "Portuguese 16th-century forts of Al Mirani & Al Jalali"
     ],
-    inclusions: ["Air-conditioned Vehicle", "English Speaking Guide", "Mosque Visit Assistance", "Bottled Water"]
+    highlightsAr: [
+      "جامع السلطان قابوس الأكبر بالسجادة الفارسية اليدوية وثريا الكريستال",
+      "التنزه على كورنيش مطرح وزيارة سوق اللبان والبخور والفضيات",
+      "قصر العلم العامر - القصر الاحتفالي الرائع للسلطان",
+      "قلاع مسقط التاريخية العريقة: قلعة الجلالي والميراني"
+    ],
+    inclusions: ["Air-conditioned Vehicle", "English Speaking Guide", "Mosque Visit Assistance", "Bottled Water"],
+    inclusionsAr: ["مركبة حديثة ومكيفة", "مرشد سياحي متمكن بالعربية والإنجليزية", "تنسيق وإرشادات زيارة الجامع", "مياه ومشروبات باردة"]
   },
   {
     id: "pkg-7",
     num: "07",
     title: "Historical Tour: Nizwa, Bahla Fort & Jabreen Castle",
+    titleAr: "جولة التراث: نزوى، قلعة بهلاء وحصن جبرين",
     badge: "UNESCO Heritage",
+    badgeAr: "تراث اليونسكو",
     location: "Ad Dakhiliyah Heritage Region",
+    locationAr: "محافظة الداخلية التراثية",
     duration: "Full Day / 8 Hours",
+    durationAr: "يوم كامل / 8 ساعات",
     groupSize: "Up to 6 Guests",
+    groupSizeAr: "حتى 6 ضيوف",
     price: "OMR 90",
+    priceAr: "90 ر.ع.",
     pricePeriod: "per person",
-    image: "/images/3-3_1.png",
-    fallbackImages: ["/images/1-6_1.png", "/images/11-1.png"],
+    pricePeriodAr: "للشخص الواحد",
+    image: "/images/2-2.png",
+    fallbackImages: ["/images/7-1.png", "/images/3-3.png"],
     overview: "A deep dive into Oman's architectural glory. Visit Oman's sole UNESCO World Heritage fortress at Bahla, the scholarly battlements and painted floral ceilings of 1675 Jabreen Castle, and historical Nizwa.",
+    overviewAr: "غوص تاريخي في أمجاد العمارة العمانية. زر قلعة بهلاء المدرجة في قائمة التراث العالمي لليونسكو، وتأمل الأسقف المزخرفة المدهشة في حصن جبرين المشيد عام 1675م، وأسواق نزوى التاريخية.",
     highlights: [
       "UNESCO-listed Bahla Fort with 12 km protective walls & adobe towers",
       "Jabreen Castle: historic center of Islamic medicine, astrology, and art",
       "Nizwa Old Capital fortress and craft markets",
       "Dramatic Hajar mountain backdrop throughout the drive"
     ],
-    inclusions: ["All Monument Admission Fees", "Private Transport", "Heritage Guide", "Lunch at Local Omani Restaurant"]
+    highlightsAr: [
+      "قلعة بهلاء المسجلة باليونسكو بسورها الدفاعي الممتد 12 كم",
+      "حصن جبرين: مركز تاريخي لعلم الفلك والطب الإسلامي والفنون",
+      "عاصمة عمان القديمة نزوى وحرفها اليدوية وأسواقها التراثية",
+      "مشاهد خلابة لجبال الحجر على طول مسار الرحلة"
+    ],
+    inclusions: ["All Monument Admission Fees", "Private Transport", "Heritage Guide", "Lunch at Local Omani Restaurant"],
+    inclusionsAr: ["جميع رسوم دخول القلاع والحصون", "وسيلة نقل خاصة ومكيفة", "مرشد تراثي متخصص", "وجبة غداء في مطعم عماني شعبي"]
   },
   {
     id: "pkg-8",
     num: "08",
     title: "Historical Muscat Sunset Cruise",
+    titleAr: "جولة غروب الشمس التاريخية في مسقط",
     badge: "Golden Hour",
+    badgeAr: "الغروب الذهبي",
     location: "Old Muscat Harbors & Cemetery Bay",
+    locationAr: "موانئ مسقط القديمة وخليج المقبرة",
     duration: "2 Hours Sunset",
+    durationAr: "ساعتان عند الغروب",
     groupSize: "Sharing or Private",
+    groupSizeAr: "خاصة أو مشتركة",
     price: "OMR 25",
+    priceAr: "25 ر.ع.",
     pricePeriod: "per person",
-    image: "/images/Untitled-design-42.png",
-    fallbackImages: ["/images/jet-ski-activity.png"],
+    pricePeriodAr: "للشخص الواحد",
+    image: "/images/1-4.png",
+    fallbackImages: ["/images/2-4.png", "/images/6-3.png"],
     overview: "Sail out as the desert sun dips behind the rugged jagged mountains of Muscat. Pass ancient Portuguese structures, old fishing coves, and the glowing façade of Al Alam Palace from the water.",
+    overviewAr: "أبحر مع غروب الشمس الذهبية خلف جبال مسقط الشاهقة. مر بجانب الحصون التاريخية وأخوار الصيد القديمة والواجهة المتلألئة لقصر العلم العامر من عرض البحر.",
     highlights: [
       "Golden hour lighting over Old Muscat and coastal cliff faces",
       "Pass by Cemetery Bay, Al Jalali Fort, and Mirani Fort",
       "Unmatched vantage point of the sun descending behind Al Hajar Mountains",
       "Relaxing maritime atmosphere with Omani kahwa and dates on board"
     ],
-    inclusions: ["2-Hour Boat Cruise", "Traditional Dates & Coffee", "Water & Soft Drinks", "Life Jackets"]
+    highlightsAr: [
+      "إضاءة الساعة الذهبية الساحرة على صخور مسقط القديمة وقلاعها",
+      "المرور بجانب خليج المقبرة التاريخي وقلعتي الجلالي والميراني",
+      "مشهد بانورامي لا يتكرر لقرص الشمس وهو يغيب وراء جبال الحجر",
+      "أجواء بحرية هادئة مع تقديم القهوة العمانية الأصيلة والتمر"
+    ],
+    inclusions: ["2-Hour Boat Cruise", "Traditional Dates & Coffee", "Water & Soft Drinks", "Life Jackets"],
+    inclusionsAr: ["إبحار لمدة ساعتين على مركب سياحي", "قهوة عمانية تقليدية وتمر فاخر", "مياه ومشروبات غازية منعشة", "سترات نجاة آمنة"]
   },
   {
     id: "pkg-9",
     num: "09",
     title: "Jabal Akhdar (Green Mountain) & Birkat Al Mouz",
+    titleAr: "الجبل الأخضر وقرية بركة الموز",
     badge: "High Altitude",
+    badgeAr: "قمم شاهقة",
     location: "Jabal Akhdar (2,000m Altitude), Oman",
+    locationAr: "الجبل الأخضر (ارتفاع 2000م)، عمان",
     duration: "Full Day / 8-9 Hours",
+    durationAr: "يوم كامل / 8-9 ساعات",
     groupSize: "Up to 5 Guests",
+    groupSizeAr: "حتى 5 ضيوف",
     price: "OMR 105",
+    priceAr: "105 ر.ع.",
     pricePeriod: "per person",
-    image: "/images/Untitled-design-59.png",
-    fallbackImages: ["/images/7_1.png"],
+    pricePeriodAr: "للشخص الواحد",
+    image: "/images/2-5.png",
+    fallbackImages: ["/images/6-4.png", "/images/3-5_1.png"],
     overview: "Escape into the cool mountain breezes of Jebel Akhdar, renowned for its cliff-hanging stone villages and ancient terraced gardens growing pomegranates, apricots, walnuts, and Damask roses.",
+    overviewAr: "اهرب من حرارة الصيف إلى نسائم الجبل الأخضر العليلة على ارتفاع 2000 متر، المشهور بقراه الحجرية المعلقة ومدرجاته الزراعية لزراعة الرمان والجوز والورد الجبلي.",
     highlights: [
       "Ascend Saiq Plateau via winding mountain roads requiring certified 4WD",
       "Walk the cliff path between terrace villages: Wadi Bani Habib, Al Ain & Al Aqur",
       "UNESCO-listed Falaj water channel system at the ruined village of Birkat Al Mouz",
       "Cool mountain climate with sweeping canyon panoramas"
     ],
-    inclusions: ["Certified Mountain 4WD & Driver", "Village Guided Walk", "Lunch in Jebel Akhdar", "Bottled Water"]
+    highlightsAr: [
+      "الصعود إلى هضبة سيق عبر المنحنيات الجبلية بسيارات الدفع الرباعي",
+      "المشي في مسار القرى والمدرجات: وادي بني حبيب، العين، والعقر",
+      "نظام فلج الخطمين المسجل باليونسكو في بلدة بركة الموز التاريخية",
+      "طقس معتدل عليل وإطلالات شاهقة على الهوات العميقة للوديان"
+    ],
+    inclusions: ["Certified Mountain 4WD & Driver", "Village Guided Walk", "Lunch in Jebel Akhdar", "Bottled Water"],
+    inclusionsAr: ["سيارة 4WD جبلية معتمدة مع سائق خبير", "جولة مشي إرشادية بين القرى والمدرجات", "غداء شهي في مطعم بالجبل الأخضر", "مياه شرب معبأة"]
   }
 ];
 
@@ -219,235 +359,363 @@ export const fleetVehicles = [
     id: "buggy-1000-4",
     category: "buggy",
     name: "Polaris RZR 1000 cc Turbo (4-Seater)",
+    nameAr: "بولاريس RZR 1000 تيربو (4 مقاعد)",
     capacity: "4 Passengers",
+    capacityAr: "4 ركاب",
     power: "1000cc Turbo Engine",
+    powerAr: "محرك تيربو 1000 سي سي",
     rateHourly: "OMR 150 / hr",
+    rateHourlyAr: "150 ر.ع. / ساعة",
     discountRate: "OMR 135 / hr",
+    discountRateAr: "135 ر.ع. / ساعة",
     image: "/images/Polaris-1000-P.C.-turbo-Buggy.png",
     badge: "Ultimate Family / Group Rig",
-    specs: ["Turbocharged 1000cc", "4-point racing harness", "Long-travel dune suspension", "Automatic transmission", "Safety roll cage"]
+    badgeAr: "الخيار الأقوى للعائلات والمجموعات",
+    specs: ["Turbocharged 1000cc", "4-point racing harness", "Long-travel dune suspension", "Automatic transmission", "Safety roll cage"],
+    specsAr: ["محرك تيربو 1000 سي سي", "أحزمة سباق رباعية النقاط", "نظام تعليق خاص بالكثبان", "ناقل حركة أوتوماتيكي", "قفص حماية فولاذي متكامل"]
   },
   {
     id: "buggy-1000-2",
     category: "buggy",
     name: "Polaris RZR 1000 cc Turbo (2-Seater)",
+    nameAr: "بولاريس RZR 1000 تيربو (مقعدان)",
     capacity: "2 Passengers",
+    capacityAr: "راكبان",
     power: "1000cc High-Output Turbo",
+    powerAr: "محرك تيربو فائق القوة",
     rateHourly: "OMR 150 / hr",
+    rateHourlyAr: "150 ر.ع. / ساعة",
     discountRate: "OMR 135 / hr",
+    discountRateAr: "135 ر.ع. / ساعة",
     image: "/images/dune-buggy.png",
     badge: "Pure Adrenaline",
-    specs: ["168 HP Turbo Charged", "Electronic Power Steering", "Walker Evans Needle Shocks", "All-Wheel Drive (AWD)", "Pre-ride safety briefing"]
+    badgeAr: "قمة الحماس والسرعة",
+    specs: ["168 HP Turbo Charged", "Electronic Power Steering", "Walker Evans Needle Shocks", "All-Wheel Drive (AWD)", "Pre-ride safety briefing"],
+    specsAr: ["بقوة 168 حصان تيربو", "توجيه إلكتروني معزز", "مساعدات Walker Evans المتطورة", "دفع رباعي مستمر AWD", "إحاطة وتدريب أمان قبل الانطلاق"]
   },
   {
     id: "buggy-800-2",
     category: "buggy",
     name: "Polaris 800 cc (2-Seater)",
+    nameAr: "بولاريس 800 سي سي (مقعدان)",
     capacity: "2 Passengers",
+    capacityAr: "راكبان",
     power: "800cc Twin Engine",
+    powerAr: "محرك ثنائي 800 سي سي",
     rateHourly: "OMR 80 / hr",
+    rateHourlyAr: "80 ر.ع. / ساعة",
     discountRate: "OMR 72 / hr",
+    discountRateAr: "72 ر.ع. / ساعة",
     image: "/images/Polaris-800-pc-2-people-price-80-OMR..png",
     badge: "Balanced Trail Buggy",
-    specs: ["800cc High Output", "Dual bucket seats", "Full sand roll cage", "Automatic CVT", "Ideal for couples & beginners"]
+    badgeAr: "مثالية للمسارات الرملية",
+    specs: ["800cc High Output", "Dual bucket seats", "Full sand roll cage", "Automatic CVT", "Ideal for couples & beginners"],
+    specsAr: ["أداء عالي 800 سي سي", "مقاعد رياضية مريحة", "قفص فولاذي كامل للكثبان", "ناقل حركة CVT سهل", "ممتازة للأزواج والمبتدئين"]
   },
   {
     id: "buggy-600-2",
     category: "buggy",
     name: "Polaris 600 cc (2-Seater)",
+    nameAr: "بولاريس 600 سي سي (مقعدان)",
     capacity: "2 Passengers",
+    capacityAr: "راكبان",
     power: "600cc Dune Engine",
+    powerAr: "محرك 600 سي سي",
     rateHourly: "OMR 65 / hr",
+    rateHourlyAr: "65 ر.ع. / ساعة",
     discountRate: "OMR 58 / hr",
+    discountRateAr: "58 ر.ع. / ساعة",
     image: "/images/Polaris-600-pc-2-people.png",
     badge: "Agile Dune Cruiser",
-    specs: ["600cc fuel injection", "Hydraulic disc brakes", "Lightweight chassis", "Safe speed limiter available", "Easy handling"]
+    badgeAr: "خفيفة وسلسة على الكثبان",
+    specs: ["600cc fuel injection", "Hydraulic disc brakes", "Lightweight chassis", "Safe speed limiter available", "Easy handling"],
+    specsAr: ["حقن وقود إلكتروني 600 سي سي", "فرامل هيدروليكية قرصية", "هيكل خفيف ورشيق", "إمكانية ضبط السرعة للأمان", "سهولة تامة في القيادة"]
   },
   {
     id: "buggy-170-2",
     category: "buggy",
     name: "Polaris 170 cc Youth / Junior",
+    nameAr: "بولاريس 170 سي سي للناشئين واليافعين",
     capacity: "2 Passengers",
+    capacityAr: "راكبان (ناشئين)",
     power: "170cc 4-Stroke",
+    powerAr: "محرك 170 سي سي رباعي الأشواط",
     rateHourly: "OMR 45 / hr",
+    rateHourlyAr: "45 ر.ع. / ساعة",
     discountRate: "OMR 40 / hr",
+    discountRateAr: "40 ر.ع. / ساعة",
     image: "/images/Polaris-170-cc-2-people.png",
     badge: "Family & Junior Safe",
-    specs: ["Parental speed controls", "Youth roll cage", "Safety flag & helmets", "Electric start", "Smooth throttle"]
+    badgeAr: "آمنة ومصممة لليافعين",
+    specs: ["Parental speed controls", "Youth roll cage", "Safety flag & helmets", "Electric start", "Smooth throttle"],
+    specsAr: ["نظام تحكم بالسرعة من قبل الأهل", "قفص حماية مخصص لليافعين", "خوذات وعلم أمان عالي الرؤية", "تشغيل كهربائي سلس", "استجابة دعسة ناعمة"]
   },
   // QUAD BIKES
   {
     id: "quad-700",
     category: "quad",
     name: "Yamaha Raptor 700 cc Quad ATV",
+    nameAr: "دراجة ياماها رابتور 700 سي سي (ATV)",
     capacity: "1 Rider",
+    capacityAr: "سائق واحد",
     power: "700cc Big-Bore Beast",
+    powerAr: "وحش الرمال 700 سي سي",
     rateHourly: "OMR 55 / hr",
+    rateHourlyAr: "55 ر.ع. / ساعة",
     image: "/images/Quad-Bike-Safari-activity.png",
     badge: "King of the Dunes",
-    specs: ["700cc Liquid-cooled fuel-injected", "5-speed manual with reverse", "High-performance paddle tires", "For experienced riders"]
+    badgeAr: "ملك الكثبان الرملية",
+    specs: ["700cc Liquid-cooled fuel-injected", "5-speed manual with reverse", "High-performance paddle tires", "For experienced riders"],
+    specsAr: ["تبريد سائل وحقن إلكتروني 700 سي سي", "جير عادي 5 سرعات مع ريفرس", "إطارات رملية مجنحة فائقة التماسك", "للسائقين أصحاب الخبرة"]
   },
   {
     id: "quad-400",
     category: "quad",
     name: "Sport Quad Bike 400 cc",
+    nameAr: "دراجة كواد رياضية 400 سي سي",
     capacity: "1 Rider",
+    capacityAr: "سائق واحد",
     power: "400cc 4-Stroke Engine",
+    powerAr: "محرك 400 سي سي",
     rateHourly: "OMR 35 / hr",
+    rateHourlyAr: "35 ر.ع. / ساعة",
     image: "/images/quad-1.png",
     badge: "Most Popular ATV",
-    specs: ["400cc electric start", "Dual wishbone front suspension", "Hydraulic disc brakes", "All-terrain capability"]
+    badgeAr: "الدراجة الأكثر طلباً",
+    specs: ["400cc electric start", "Dual wishbone front suspension", "Hydraulic disc brakes", "All-terrain capability"],
+    specsAr: ["تشغيل كهربائي 400 سي سي", "نظام تعليق مزدوج أمامي", "فرامل هيدروليكية قرصية", "قدرة عالية على مختلف التضاريس"]
   },
   {
     id: "quad-250",
     category: "quad",
     name: "Sport Quad Bike 250 cc",
+    nameAr: "دراجة كواد 250 سي سي",
     capacity: "1 Rider",
+    capacityAr: "سائق واحد",
     power: "250cc Engine",
+    powerAr: "محرك 250 سي سي",
     rateHourly: "OMR 25 / hr",
+    rateHourlyAr: "25 ر.ع. / ساعة",
     image: "/images/quad-2.png",
     badge: "Great for Beginners",
-    specs: ["250cc smooth power", "Automatic or semi-auto", "Easy steer geometry", "Safety equipment included"]
+    badgeAr: "مثالية للمبتدئين",
+    specs: ["250cc smooth power", "Automatic or semi-auto", "Easy steer geometry", "Safety equipment included"],
+    specsAr: ["قوة سلسة 250 سي سي", "ناقل حركة أوتوماتيك أو نصف أوتوماتيك", "مقود سهل التحكم والتوجيه", "يشمل كامل معدات الأمان"]
   },
   {
     id: "quad-100",
     category: "quad",
     name: "Junior Quad Bike 100 cc",
+    nameAr: "دراجة كواد للأطفال والناشئين 100 سي سي",
     capacity: "1 Junior Rider",
+    capacityAr: "طفل / ناشئ واحد",
     power: "100cc Safe Engine",
+    powerAr: "محرك آمن 100 سي سي",
     rateHourly: "OMR 15 / hr",
-    image: "/images/350-cc.png",
+    rateHourlyAr: "15 ر.ع. / ساعة",
+    image: "/images/100-cc.png",
     badge: "Junior / Kids",
-    specs: ["100cc governor limiter", "Lightweight frame", "Full safety kit", "Dedicated beginner flat sand track"]
+    badgeAr: "للأطفال والناشئين",
+    specs: ["100cc governor limiter", "Lightweight frame", "Full safety kit", "Dedicated beginner flat sand track"],
+    specsAr: ["محدد سرعة ميكانيكي للأمان", "هيكل خفيف ملائم للأطفال", "خوذات وواقيات متكاملة", "مضمار رملي مستوٍ وآمن"]
   },
   // WATER SPORTS
   {
     id: "water-jetski",
     category: "water",
     name: "High-Performance Yamaha Jet Ski",
+    nameAr: "دراجة ياماها مائية نفاثة (جيت سكي)",
     capacity: "1-2 Riders",
+    capacityAr: "1-2 راكب",
     power: "1800cc Supercharged",
+    powerAr: "محرك 1800 سي سي سوبرتشارج",
     rateHourly: "OMR 45 / 30 mins",
+    rateHourlyAr: "45 ر.ع. / 30 دقيقة",
     image: "/images/jet-ski-activity.png",
     badge: "Top Marine Thrill",
-    specs: ["1800cc high output engine", "Reverse assist (RiDE)", "Life vests provided", "Muscat coastal zone freedom"]
+    badgeAr: "قمة الإثارة البحرية",
+    specs: ["1800cc high output engine", "Reverse assist (RiDE)", "Life vests provided", "Muscat coastal zone freedom"],
+    specsAr: ["محرك نفاث 1800 سي سي فائق القوة", "نظام RiDE للتحكم بالريفرس والمناورة", "سترات نجاة معتمدة", "حرية الانطلاق في المياه المفتوحة"]
   },
   {
     id: "water-jetcar",
     category: "water",
     name: "Luxury Marine Jet Car",
+    nameAr: "السيارة المائية الفاخرة (جيت كار)",
     capacity: "2 Passengers",
+    capacityAr: "راكبان",
     power: "Corvette Marine Design",
+    powerAr: "تصميم كورفيت البحري الفاخر",
     rateHourly: "OMR 65 / 30 mins",
-    image: "/images/Untitled-design-42.png",
+    rateHourlyAr: "65 ر.ع. / 30 دقيقة",
+    image: "/images/1-6.png",
+    fallbackImages: ["/images/1-10_1.png", "/images/1-6_2.png"],
     badge: "VIP Supercar on Water",
-    specs: ["Sportscar cockpit styling", "Steering wheel & gas pedal on water", "Bluetooth sound system", "Unforgettable photos"]
+    badgeAr: "سيارة سوبركاربحرية VIP",
+    specs: ["Sportscar cockpit styling", "Steering wheel & gas pedal on water", "Bluetooth sound system", "Unforgettable photos"],
+    specsAr: ["مقصورة سيارة رياضية فارهة", "مقود ودواسة وقود على سطح الماء", "نظام صوتي بلوتوث عالي النقاء", "صور وفيديوهات استثنائية للتاريخ"]
   },
   {
     id: "water-flyboard",
     category: "water",
     name: "Hydro Flyboard Session",
+    nameAr: "جلسة فلاي بورد المائية النفاثة",
     capacity: "1 Person",
+    capacityAr: "شخص واحد",
     power: "Hydro-Jet Propulsion",
+    powerAr: "دفع هيدروليكي مائي نفاث",
     rateHourly: "OMR 40 / 30 mins",
+    rateHourlyAr: "40 ر.ع. / 30 دقيقة",
     image: "/images/FLY-BOARD.png",
+    fallbackImages: ["/images/10.png", "/images/11.png"],
     badge: "Fly Above the Sea",
-    specs: ["Certified flyboard instructor", "Soar up to 10 meters", "Complete safety gear & helmet", "Personalized coaching"]
+    badgeAr: "حلّق فوق سطح البحر",
+    specs: ["Certified flyboard instructor", "Soar up to 10 meters", "Complete safety gear & helmet", "Personalized coaching"],
+    specsAr: ["مدرب فلاي بورد محترف معتمد", "ارتفاع حتى 10 أمتار فوق الماء", "معدات أمان وخوذة واقية كاملة", "تدريب وتوجيه فردي خطوة بخطوة"]
   },
   {
     id: "water-banana",
     category: "water",
     name: "Banana Boat & Crazy Sofa Tube",
+    nameAr: "قارب الموزة والصوفا المائية السريعة",
     capacity: "4 - 8 Passengers",
+    capacityAr: "4 - 8 ركاب",
     power: "Speedboat Towed",
+    powerAr: "سحب بقارب سريع عالي الأداء",
     rateHourly: "OMR 30 / 20 mins",
+    rateHourlyAr: "30 ر.ع. / 20 دقيقة",
     image: "/images/BANANA-BOAT.png",
+    fallbackImages: ["/images/banana-boat-1.png", "/images/sofa-1.png"],
     badge: "Family & Friends Fun",
-    specs: ["High-speed wave carving", "Life jackets for everyone", "Lots of laughs and splash", "Great for kids & groups"]
+    badgeAr: "متعة لا تُنسى للعائلات والأصدقاء",
+    specs: ["High-speed wave carving", "Life jackets for everyone", "Lots of laughs and splash", "Great for kids & groups"],
+    specsAr: ["انعطافات وركوب أمواج سريع وممتع", "سترات نجاة مريحة لجميع الأعمار", "ضحكات وذكريات مائية رائعة", "مثالية للأطفال والمجموعات"]
   },
   {
     id: "water-kayak-padel",
     category: "water",
     name: "Sea Kayak & Stand-Up Paddle (SUP)",
+    nameAr: "قوارب الكاياك والتجديف الواقف (SUP)",
     capacity: "1 - 2 Persons",
+    capacityAr: "1 - 2 شخص",
     power: "Human Powered / Serene",
+    powerAr: "تجديف يدوي / استرخاء هادئ",
     rateHourly: "OMR 12 / hour",
+    rateHourlyAr: "12 ر.ع. / ساعة",
     image: "/images/STAND-PADEL.png",
+    fallbackImages: ["/images/KAYAK.png", "/images/Stand-padel.jpeg"],
     badge: "Tranquil Coastal Discovery",
-    specs: ["Single or tandem ocean kayaks", "Stable wide paddleboards", "Explore rocky coves", "Paddle & vest included"]
+    badgeAr: "استكشاف هادئ للخلجان الصخرية",
+    specs: ["Single or tandem ocean kayaks", "Stable wide paddleboards", "Explore rocky coves", "Paddle & vest included"],
+    specsAr: ["كاياك فردي أو ثنائي فاخر", "ألواح تجديف عريضة وثابتة جداً", "استكشاف الكهوف والأخوار الصخرية", "يشمل المجداف وسترة النجاة"]
   },
   // DESERT & ECO
   {
     id: "land-sandboard",
     category: "land",
     name: "Dune Sandboarding",
+    nameAr: "التزلج على الكثبان الرملية (ساندبورد)",
     capacity: "Individual",
+    capacityAr: "فردي",
     power: "Gravity Powered",
+    powerAr: "قوة الجاذبية والانزلاق",
     rateHourly: "OMR 10 / session",
-    image: "/images/SAND-BOARD.png",
+    rateHourlyAr: "10 ر.ع. / جلسة",
+    image: "/images/Sand-boarding.png",
+    fallbackImages: ["/images/SAND-BOARD.png"],
     badge: "Snowboarding on Sand",
-    specs: ["Custom wax-treated sandboards", "Foot straps", "Endless towering dunes", "Epic action shots"]
+    badgeAr: "تزلج ثلجي فوق الرمال الذهبية",
+    specs: ["Custom wax-treated sandboards", "Foot straps", "Endless towering dunes", "Epic action shots"],
+    specsAr: ["ألواح مخصصة ومعالجة بالشمع للشحذ", "أربطة أقدام آمنة وثابتة", "كثبان وهيبة الشاهقة اللانهائية", "لقطات تصوير مذهلة للحركة"]
   },
   {
     id: "land-horse",
     category: "land",
     name: "Arabian Horse & Pony Riding",
+    nameAr: "ركوب الخيل العربي الأصيل والمهر للأطفال",
     capacity: "1 Rider",
+    capacityAr: "فارس واحد",
     power: "Purebred Arabian Steeds",
+    powerAr: "خيول عربية أصيلة مدربة",
     rateHourly: "OMR 25 / 45 mins",
-    image: "/images/horse-1.png",
+    rateHourlyAr: "25 ر.ع. / 45 دقيقة",
+    image: "/images/horse.png",
+    fallbackImages: ["/images/horse-1.png", "/images/horse-2.png"],
     badge: "Beach & Dune Equine",
-    specs: ["Gentle well-trained Arabian horses", "Pony rides for children", "Sunset beach galloping", "Helmet & instructor provided"]
+    badgeAr: "ركوب خيل على الشاطئ والكثبان",
+    specs: ["Gentle well-trained Arabian horses", "Pony rides for children", "Sunset beach galloping", "Helmet & instructor provided"],
+    specsAr: ["خيول عربية أصيلة هادئة ومطيعة", "مهور صغيرة لطيفة للأطفال", "ركوب على رمال الشاطئ وقت الغروب", "يشمل خوذة الأمان ومرافقة المدرب"]
   },
   {
     id: "land-scooter",
     category: "land",
     name: "AO Drive Electric Scooters",
+    nameAr: "سكوترات AO Drive الكهربائية الذكية",
     capacity: "1 Rider",
+    capacityAr: "راكب واحد",
     power: "Eco-Friendly Electric Fleet",
+    powerAr: "أسطول كهربائي صديق للبيئة",
     rateHourly: "OMR 5 / hour",
-    image: "/images/Untitled-design-43.png",
+    rateHourlyAr: "5 ر.ع. / ساعة",
+    image: "/images/electric-scooter-1.png",
+    fallbackImages: ["/images/Untitled-design-43.png"],
     badge: "Smart Urban & Beach Mobility",
-    specs: ["AO Drive App connected", "Real-time GPS tracking", "Long-range battery", "Helmet & lock included"]
+    badgeAr: "تنقل ذكي على الشواطئ والممرات",
+    specs: ["AO Drive App connected", "Real-time GPS tracking", "Long-range battery", "Helmet & lock included"],
+    specsAr: ["متصل بتطبيق AO Drive الذكي", "تتبع بنظام GPS اللحظي", "بطارية طويلة المدى للمسافات", "يشمل الخوذة وقفل الأمان"]
   }
 ];
 
 export const clientReviews = [
   {
     quote: "The great desert safari was amazing. Very friendly and professional guide. Highly recommend it to everyone visiting Oman!",
+    quoteAr: "كانت رحلة السفاري في رمال وهيبة ساحرة بكل المقاييس. المرشد العماني كان غاية في اللطف والاحترافية. أنصح بها بشدة لكل زائر لعمان!",
     author: "Brooklyn Simmons",
     company: "BARONE LLC",
-    tour: "Wahiba Sands Desert Safari"
+    tour: "Wahiba Sands Desert Safari",
+    tourAr: "سفاري رمال وهيبة الصحراوي"
   },
   {
     quote: "Snorkeling at the Daymaniyat islands felt like swimming in a tropical aquarium. We saw dozens of turtles and the yacht was first-class.",
+    quoteAr: "السنوركلينج في جزر الديمانيات كان كأنك تسبح في حوض سمك استوائي ضخم! شاهدنا عشرات السلاحف وكان اليخت في قمة الفخامة والنظافة.",
     author: "Marcus Vance",
     company: "Luxury Escapes UK",
-    tour: "Luxury Private Cruise"
+    tour: "Luxury Private Cruise",
+    tourAr: "رحلة اليخت الفاخر الخاصة"
   },
   {
     quote: "Renting the Polaris 1000 Turbo for 4 people was the highlight of our Oman vacation. The power in the sand dunes is unbelievable!",
-    author: "Sultan Al-Harthy",
+    quoteAr: "استئجار عربة بولاريس 1000 تيربو لـ 4 أشخاص كان أروع ما قمنا به في إجازتنا بعمان. قوتها الجبارة فوق الكثبان الرملية خيالية!",
+    author: "سلطان الحارثي",
     company: "Muscat Adventurer",
-    tour: "Polaris 1000cc Turbo Buggy"
+    tour: "Polaris 1000cc Turbo Buggy",
+    tourAr: "عربة بولاريس 1000 تيربو"
   }
 ];
 
 export const faqs = [
   {
     q: "Do I need a driver's license to drive the Quad Bikes or Polaris Buggies?",
-    a: "For off-road desert dune tracks, a regular driver's license is recommended for adults, but our closed desert tracks are guided with a comprehensive safety briefing. For youth buggies (170cc) and junior quads, parental consent is required and safety speed limits are enforced."
+    qAr: "هل أحتاج إلى رخصة قيادة لقيادة دراجات الكواد أو عربات البولاريس؟",
+    a: "For off-road desert dune tracks, a regular driver's license is recommended for adults, but our closed desert tracks are guided with a comprehensive safety briefing. For youth buggies (170cc) and junior quads, parental consent is required and safety speed limits are enforced.",
+    aAr: "للقيادة في المسارات الصحراوية، يوصى برخصة قيادة عادية للبالغين، علماً بأن مساراتنا مزودة بإحاطة أمان وإشراف كامل. بالنسبة لعربات ودراجات الناشئين (170 سي سي وأقل)، يُطلب موافقة ولي الأمر مع تطبيق حدود سرعة صارمة للأمان."
   },
   {
     q: "Are the tour packages private or group tours?",
-    a: "We offer both! You can book an exclusive private charter or private 4WD for your family/group, or join one of our scheduled small sharing groups to enjoy budget-friendly rates."
+    qAr: "هل باقات الجولات السياحية خاصة أم مشتركة مع مجموعات؟",
+    a: "We offer both! You can book an exclusive private charter or private 4WD for your family/group, or join one of our scheduled small sharing groups to enjoy budget-friendly rates.",
+    aAr: "نوفر كلا الخيارين! يمكنك حجز يخت خاص أو سيارة دفع رباعي خاصة لك ولعائلتك، أو الانضمام إلى إحدى رحلاتنا المجدولة بمجموعات صغيرة بأسعار اقتصادية ممتازة."
   },
   {
     q: "What should I bring on the Dimaniyat Islands Snorkeling trip?",
-    a: "Swimwear, towel, biodegradable sunscreen, sunglasses, and a camera or waterproof phone pouch. We provide all snorkeling masks, fins, life jackets, fresh fruits, cold refreshments, and official nature reserve permits."
+    qAr: "ما الذي يجب أن أحضره معي لرحلة سنوركلينج جزر الديمانيات؟",
+    a: "Swimwear, towel, biodegradable sunscreen, sunglasses, and a camera or waterproof phone pouch. We provide all snorkeling masks, fins, life jackets, fresh fruits, cold refreshments, and official nature reserve permits.",
+    aAr: "ملابس السباحة، منشفة، واقي شمس صديق للبيئة، نظارة شمسية، وجراب هاتف مقاوم للماء. نحن نوفر جميع معدات السنوركلينج والزعانف وسترات النجاة والفواكه الطازجة والمشروبات وتصاريح المحمية الرسمية."
   },
   {
     q: "Where is your pickup location?",
-    a: "We provide door-to-door hotel and residence pickup in Muscat for all full-day tour packages, or you can meet us directly at our Muscat marina berth or desert staging camp."
+    qAr: "أين تقع نقطة الاستقبال والتوصيل؟",
+    a: "We provide door-to-door hotel and residence pickup in Muscat for all full-day tour packages, or you can meet us directly at our Muscat marina berth or desert staging camp.",
+    aAr: "نوفر خدمة التوصيل المباشر من وإلى جميع فنادق وأماكن الإقامة في مسقط لكافة باقات اليوم الكامل، أو يمكنكم التوجه مباشرة إلى مرسى اليخوت بمارينا مسقط أو مخيم الانطلاق الصحراوي."
   }
 ];

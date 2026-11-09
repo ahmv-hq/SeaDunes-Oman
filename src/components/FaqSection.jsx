@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { faqs } from '../data/seadunesData';
-import { ChevronDown, HelpCircle } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 
 export default function FaqSection() {
   const [openIdx, setOpenIdx] = useState(0);

@@ -12,11 +12,14 @@ import PackageDetailModal from './components/PackageDetailModal';
 import { companyInfo } from './data/seadunesData';
 import { MessageSquare, ArrowUp } from 'lucide-react';
 import { initScrollAnimations } from './utils/scrollAnimations';
+import { LanguageProvider } from './context/LanguageProvider';
+import { useLanguage } from './context/LanguageContext';
 
-export default function App() {
+function AppContent() {
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
   const [bookingInitialData, setBookingInitialData] = useState({});
   const [selectedPackageDetails, setSelectedPackageDetails] = useState(null);
+  const { isArabic, t } = useLanguage();
   
   // Theme state: light (default) or dark
   const [theme, setTheme] = useState(() => {
@@ -71,8 +74,12 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const whatsappMessage = isArabic
+    ? 'مرحباً%20سي%20ديونز%20عمان،%20أود%20الاستفسار%20عن%20حجز%20مغامرة%20سياحية.'
+    : 'Hello%20SeaDunes%20Oman,%20I%20would%20like%20to%20inquire%20about%20booking%20an%20adventure.';
+
   return (
-    <div className="page-wrapper" data-theme={theme}>
+    <div className="page-wrapper" data-theme={theme} data-lang={isArabic ? 'ar' : 'en'}>
       
       {/* Scroll Progress Bar at the Top */}
       <div 
@@ -80,7 +87,7 @@ export default function App() {
         style={{ width: `${scrollProgress}%` }} 
       />
 
-      {/* Fixed Navbar with Theme Switcher */}
+      {/* Fixed Navbar with Stylized Wordmark, Theme & Language Switchers */}
       <Navbar 
         onOpenBooking={handleOpenBooking}
         theme={theme}
@@ -88,7 +95,7 @@ export default function App() {
       />
 
       <main className="main-wrapper">
-        {/* Full-bleed Hero with GSAP entrance */}
+        {/* Full-bleed Hero with video & stylized content */}
         <Hero onOpenBooking={handleOpenBooking} />
 
         {/* Minimalist Statistics with Animated Counter */}
@@ -97,7 +104,7 @@ export default function App() {
         {/* Editorial Story */}
         <AboutStory onOpenBooking={handleOpenBooking} />
 
-        {/* 9 Featured Tour Packages (Vita Travel Split Cards) */}
+        {/* 9 Featured Tour Packages (100% Correlated Images & Arabic Translation) */}
         <PackagesSection 
           onOpenBooking={handleOpenBooking}
           onSelectPackageDetails={(pkg) => setSelectedPackageDetails(pkg)}
@@ -110,22 +117,24 @@ export default function App() {
         <HowItWorks />
       </main>
 
-      {/* Footer with Dedicated Full-Width Typography Banner & Clean Columns */}
+      {/* Footer with Stylized Oversized Typography Banner */}
       <Footer onOpenBooking={handleOpenBooking} />
 
       {/* Floating Action Buttons */}
       <div style={{ 
         position: 'fixed', 
         bottom: 'clamp(1rem, 3vw, 1.75rem)', 
-        right: 'clamp(1rem, 3vw, 1.75rem)', 
+        right: isArabic ? 'auto' : 'clamp(1rem, 3vw, 1.75rem)', 
+        left: isArabic ? 'clamp(1rem, 3vw, 1.75rem)' : 'auto',
         zIndex: 900, 
         display: 'flex', 
         flexDirection: 'column', 
-        alignItems: 'flex-end', 
-        gap: '0.65rem' 
+        alignItems: isArabic ? 'flex-start' : 'flex-end', 
+        gap: '0.65rem',
+        pointerEvents: 'none'
       }}>
         <a
-          href={`https://wa.me/${companyInfo.phone.replace(/[^0-9]/g, '')}?text=Hello%20SeaDunes%20Oman,%20I%20would%20like%20to%20inquire%20about%20booking%20an%20adventure.`}
+          href={`https://wa.me/${companyInfo.phone.replace(/[^0-9]/g, '')}?text=${whatsappMessage}`}
           target="_blank"
           rel="noreferrer"
           className="btn-primary desktop-only"
@@ -133,17 +142,18 @@ export default function App() {
             padding: 'clamp(0.65rem, 2vw, 0.85rem) clamp(1rem, 2.5vw, 1.4rem)', 
             fontSize: 'clamp(0.8rem, 2vw, 0.88rem)',
             boxShadow: '0 12px 30px rgba(0, 102, 255, 0.45)', 
-            textDecoration: 'none' 
+            textDecoration: 'none',
+            pointerEvents: 'auto'
           }}
         >
           <MessageSquare size={16} />
-          <span>Chat on WhatsApp</span>
+          <span>{t.common.chatWhatsApp}</span>
         </a>
 
         {showScrollTop && (
           <button
             onClick={scrollToTop}
-            aria-label="Scroll to top"
+            aria-label={t.common.scrollTop}
             style={{ 
               background: 'var(--surface-pill)', 
               border: '1px solid var(--border-glass)', 
@@ -157,7 +167,8 @@ export default function App() {
               cursor: 'pointer', 
               backdropFilter: 'blur(10px)',
               boxShadow: 'var(--card-shadow)',
-              transition: 'all 0.25s ease'
+              transition: 'all 0.25s ease',
+              pointerEvents: 'auto'
             }}
           >
             <ArrowUp size={17} />
@@ -179,5 +190,13 @@ export default function App() {
       />
 
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <LanguageProvider>
+      <AppContent />
+    </LanguageProvider>
   );
 }
